@@ -437,3 +437,30 @@
 /* Brighter ambient exposure for the 3D canvas. */
 .roblox-view{filter:saturate(.72) contrast(1.06) brightness(1.04)}
 .light-bloom{opacity:.74}
+
+/* Exact mobile viewport fit, including browser bars, notches and safe areas. */
+.game-page,.game-page .game-grid,.game-page .room-scene,.topdown-game,.roblox-view{
+  width:100%;
+  height:100dvh!important;
+  min-height:100dvh!important;
+  max-height:100dvh;
+}
+.game-page{overflow:hidden;padding:0}
+.backrooms-canvas{width:100%;height:100%}
+@media(max-width:760px){
+  .game-page .game-header{padding-left:max(10px,env(safe-area-inset-left));padding-right:max(10px,env(safe-area-inset-right))}
+  .enemy-name{left:max(10px,env(safe-area-inset-left));top:max(54px,env(safe-area-inset-top))}
+  .camera-switch{right:max(10px,env(safe-area-inset-right));top:max(54px,env(safe-area-inset-top))}
+  .sprint-hud{left:max(10px,env(safe-area-inset-left));bottom:max(112px,calc(env(safe-area-inset-bottom) + 92px));width:clamp(132px,38vw,165px)}
+  .sprint-button{right:max(18px,env(safe-area-inset-right));bottom:max(112px,calc(env(safe-area-inset-bottom) + 92px));width:clamp(58px,16vw,72px);height:clamp(58px,16vw,72px)}
+  .walk-joystick{left:max(18px,env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom))}
+  .portal-compass{top:max(53px,env(safe-area-inset-top))}
+}
+@media(max-height:500px) and (orientation:landscape){
+  .enemy-name{top:max(8px,env(safe-area-inset-top))}
+  .camera-switch{top:max(8px,env(safe-area-inset-top))}
+  .portal-compass{top:max(8px,env(safe-area-inset-top))}
+  .sprint-hud{bottom:max(12px,env(safe-area-inset-bottom))}
+  .sprint-button{bottom:max(12px,env(safe-area-inset-bottom))}
+  .look-note{display:none}
+}

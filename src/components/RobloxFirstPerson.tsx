@@ -91,8 +91,8 @@ export function RobloxFirstPerson({
     lastPointer.current = { x: event.clientX, y: event.clientY };
     const current = lookRef.current;
     const next = {
-      x: (current.x - x * .17 + 360) % 360,
-      y: Math.max(-55, Math.min(55, current.y - y * .13)),
+      x: (current.x - x * .25 + 360) % 360,
+      y: Math.max(-55, Math.min(55, current.y - y * .19)),
     };
     lookRef.current = next;
     onLook(next);

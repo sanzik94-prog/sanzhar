@@ -37,11 +37,11 @@ export function PuzzleCard({ puzzle, number, total, onSolved }: PuzzleCardProps)
       </div>
       <div className="lock-icon">{puzzle.kind === 'math' ? '⚡' : puzzle.kind === 'memory' ? '◈' : '⌗'}</div>
       <h2>{puzzle.title}</h2>
-      <p>{puzzle.kind === 'memory' ? 'Запомни последовательность символов' : 'Введи правильный ответ'}</p>
+      <p>Ответь правильно, чтобы отключить замок</p>
       <div className="puzzle-clue">{showHint ? puzzle.hint : '•  •  •  •'}</div>
       <input autoFocus value={value} onChange={(event) => setValue(event.target.value)}
         onKeyDown={(event) => event.key === 'Enter' && checkAnswer()}
-        placeholder={puzzle.kind === 'memory' ? 'Введи символы без пробелов' : 'Твой ответ'} />
+        placeholder="Введи ответ" />
       <button className="primary-button" onClick={checkAnswer}>ВЗЛОМАТЬ ЗАМОК <span>→</span></button>
       <small>Enter — подтвердить</small>
     </section>

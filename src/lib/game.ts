@@ -40,21 +40,45 @@ export function roomTime(room: number) {
   return 28 + room * 2;
 }
 
+function puzzleNumber(room: number, index: number) {
+  let number = index;
+  for (let previousRoom = 1; previousRoom < room; previousRoom += 1) {
+    number += puzzleCount(previousRoom);
+  }
+  return number;
+}
+
+function createFootballQuestion(room: number, index: number) {
+  const number = puzzleNumber(room, index);
+  if (number === 0) {
+    return {
+      question: 'В каком году Испания выиграла второй мужской чемпионат мира?',
+      answer: '2026',
+    };
+  }
+
+  const first = 2 + (number % 17);
+  const second = 1 + ((number * 3) % 11);
+  const label = `Комната ${room}, замок ${index + 1}`;
+  const templates = [
+    { question: `${label}: команда забила ${first} голов в первом тайме и ${second} во втором. Сколько всего?`, answer: first + second },
+    { question: `${label}: игрок сделал ${first + second} ударов, ${second} не попали в створ. Сколько попали?`, answer: first },
+    { question: `${label}: на секторе ${first} рядов по ${second} мест. Сколько всего мест?`, answer: first * second },
+    { question: `${label}: команда набрала ${first * 3} очков за победы. Сколько побед она одержала?`, answer: first },
+    { question: `${label}: футболист забил ${first} голов и отдал ${second} передач. Сколько результативных действий?`, answer: first + second },
+  ];
+  const selected = templates[number % templates.length];
+  return { question: selected.question, answer: String(selected.answer) };
+}
+
 export function createPuzzle(room: number, index: number) {
-  const kind = ['code', 'memory', 'math'][(room + index) % 3] as PuzzleKind;
-  const seed = room * 7 + index * 3;
-  if (kind === 'math') {
-    const left = 3 + (seed % 12);
-    const right = 2 + ((seed * 2) % 9);
-    return { kind, title: 'Сигнализация', hint: `${left} + ${right} = ?`, answer: String(left + right) };
-  }
-  if (kind === 'memory') {
-    const symbols = ['◆', '●', '▲', '■'];
-    const answer = Array.from({ length: Math.min(3 + Math.floor(room / 20), 5) }, (_, i) => symbols[(seed + i * 3) % 4]).join('');
-    return { kind, title: 'Сейф памяти', hint: answer, answer };
-  }
-  const answer = String(1000 + ((seed * 137) % 9000));
-  return { kind, title: 'Кодовый замок', hint: answer.split('').reverse().join(' · '), answer };
+  const puzzle = createFootballQuestion(room, index);
+  return {
+    kind: 'code' as const,
+    title: 'Футбольный вопрос',
+    hint: puzzle.question,
+    answer: puzzle.answer,
+  };
 }
 
 export function getRandomSkin() {

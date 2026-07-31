@@ -1,19 +1,429 @@
-:root { --night:#090c15; --panel:#111622; --gold:#e5bd54; --blue:#2569c9; }
-.home-page,.game-page{min-height:100vh;color:#fff;background:#090c15 url('./assets/night-room.png') center/cover no-repeat;font-family:Inter,system-ui,sans-serif}
-.home-page{position:relative;overflow:hidden}.home-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,15,.97),rgba(6,12,24,.75),rgba(5,8,15,.15))}
-.menu-header,.game-header{height:82px;padding:0 5vw;position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;background:rgba(8,11,19,.88);border-bottom:1px solid #394050}
-.brand{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:2px}.brand-mark{display:grid;place-items:center;width:36px;height:36px;border:2px solid var(--gold);color:var(--gold);transform:rotate(45deg)}
-.menu-stats,.header-stats{display:flex;align-items:center;gap:30px;color:#949cac;font-size:10px}.menu-stats b,.header-stats b{display:block;color:#fff;margin-top:4px}.header-stats{margin-left:auto}.icon-button{margin-right:20px;background:none;color:#fff;font-size:24px}.avatar{display:grid!important;place-items:center;width:38px;height:38px;background:#252b39;border:1px solid #596176}
-.hero-copy{position:relative;z-index:2;width:540px;margin:12vh 0 0 8vw}.eyebrow{color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px}.hero-copy h1{margin:20px 0;font-size:clamp(48px,6vw,82px);line-height:.93;font-weight:900}.hero-copy h1 em{color:var(--gold);font-style:normal}.hero-copy p{color:#b0b6c2;line-height:1.7}
-.play-button{margin-top:30px;padding:18px 22px;max-width:440px;display:flex;align-items:center;gap:18px;background:var(--gold);color:#151515;text-decoration:none}.play-button div{flex:1}.play-button small,.play-button b{display:block}.play-button i{font-size:25px}.menu-note{margin-top:12px;color:#858c99}.collection-preview{position:absolute;z-index:2;right:5vw;bottom:5vh;padding:18px;background:rgba(10,14,24,.88);border:1px solid #394050}.skin-row{display:flex;gap:8px;margin-top:12px}.skin-row span{display:grid;place-items:center;width:38px;height:38px;background:#282e3e}
-.timer-bar{height:58px;padding:0 5vw;position:relative;display:flex;align-items:center;justify-content:space-between;background:#0b0f19;color:#969eac;font-size:10px}.timer-bar b{color:var(--gold);font-size:22px}.timer-bar>i{position:absolute;left:0;bottom:0;height:3px;background:var(--gold)}
-.game-grid{min-height:calc(100vh - 140px);display:grid;grid-template-columns:minmax(380px,42%) 1fr}.puzzle-column{display:grid;place-items:center;padding:28px;background:rgba(8,12,21,.94)}
-.puzzle-card,.result-card{width:min(390px,100%);padding:25px;text-align:center;background:#111724;border:1px solid #394050;box-shadow:0 18px 45px rgba(0,0,0,.35)}.puzzle-top{display:flex;justify-content:space-between;margin-bottom:25px}.signal{color:#65ba87;font-size:8px}.lock-icon{width:60px;height:60px;margin:0 auto 20px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold);font-size:25px;transform:rotate(45deg)}.puzzle-card p,.result-card p{margin:10px 0 22px;color:#959dab}.puzzle-clue{padding:18px;margin-bottom:12px;background:#0a0e17;border:1px solid #414959;color:var(--gold);font-size:23px;letter-spacing:5px}.puzzle-card input{width:100%;padding:15px;background:#0a0e17;border:1px solid #414959;color:#fff;text-align:center}.primary-button{width:100%;margin-top:12px;padding:15px;display:flex;justify-content:space-between;background:var(--gold);color:#151515;font-weight:800}.puzzle-card small{display:block;margin-top:10px;color:#646c7a}
-.room-scene{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 38%,#1c4380,#0b1730 70%);perspective:1100px}.room-title{position:absolute;z-index:5;top:24px;left:30px;padding-left:12px;border-left:3px solid var(--gold)}.room-title small,.room-title b{display:block}.room-title small{color:#9ea9bd;font-size:8px}.room-title b{margin-top:4px}
-.iso-room{position:absolute;inset:10% 6% 12%;perspective:900px;transform-style:preserve-3d}.iso-floor{position:absolute;inset:24% 7% 3%;transform:rotateX(58deg) rotateZ(-8deg);transform-style:preserve-3d;background:repeating-linear-gradient(90deg,transparent 0 58px,rgba(94,154,220,.12) 60px),repeating-linear-gradient(0deg,#19355e 0 58px,#285083 60px);border:5px solid #0b1d3e;box-shadow:28px 34px 0 #07142d,0 45px 65px #030918}.iso-wall{position:absolute;background:linear-gradient(#285e9e,#173763);border:4px solid #102b55}.wall-back{left:11%;right:12%;top:3%;height:36%}.wall-side{right:1%;top:15%;width:25%;height:48%;transform:rotateY(-64deg)}.window-3d{margin:18px auto;width:30%;height:55%;display:grid;place-items:center;background:#07142f;border:5px solid #102852;color:#8bc5ff;font-size:25px;box-shadow:inset 0 0 20px #255da9}
-.object-3d{position:absolute;transform-style:preserve-3d}.couch{left:34%;top:44%;width:40%;height:24%;background:#563397;border:4px solid #301b67;border-radius:10px;box-shadow:0 18px 0 #29125f;transform:translateZ(45px)}.couch i{position:absolute;top:-5px;width:47%;height:55%;background:#754eb9;border:3px solid #9779d0;border-radius:8px}.couch i:first-child{left:1%}.couch i:nth-child(2){right:1%}.couch span{position:absolute;left:43%;top:8%;width:18%;height:40%;background:#e7b62d;border-radius:4px}
-.coffee-table{left:41%;top:76%;width:28%;height:13%;display:grid;place-items:center;background:#9c5f22;border:4px solid #59340f;box-shadow:0 13px 0 #4b290b;transform:translateZ(25px)}.coffee-table span{color:#ffd761}.drawer{left:5%;top:14%;width:25%;height:17%;background:#9a5a20;border:4px solid #58320f;box-shadow:0 16px 0 #4b290d;transform:translateZ(30px)}.drawer i{display:inline-block;width:32%;height:100%;border-right:2px solid #5e340e}
-.vault{right:5%;top:12%;width:19%;height:26%;display:grid;place-items:center;background:linear-gradient(135deg,#71809c,#34435e);border:5px solid #172642;box-shadow:0 20px 0 #162039;transform:translateZ(50px)}.vault span{font-size:30px;color:var(--gold)}.vault b{font-size:8px}.flower{left:9%;bottom:12%;font-size:35px;color:#5bd479;text-shadow:-8px -8px #259950;transform:translateZ(35px)}.route-dots{position:absolute;left:25%;top:68%;display:flex;gap:22px}.route-dots i{width:9px;height:9px;border-radius:50%;background:#ffe36a;box-shadow:0 0 12px #ffe36a}
-.room-progress-3d{position:absolute;z-index:5;left:7%;right:7%;bottom:24px;padding:13px 16px;background:rgba(7,14,29,.9);border:1px solid #40516f;font-size:9px}.room-progress-3d b{float:right;color:var(--gold)}.room-progress-3d>div{height:3px;margin-top:9px;background:#30394a}.room-progress-3d i{display:block;height:100%;background:var(--gold)}
-.modal-backdrop{position:fixed;z-index:20;inset:0;display:grid;place-items:center;background:rgba(3,6,12,.86)}.case-modal{width:min(390px,calc(100% - 30px));padding:30px;text-align:center;background:#121824;border:1px solid var(--gold)}.case-glow{margin:22px auto;width:100px;height:100px;display:grid;place-items:center;background:#574829;font-size:50px}.case-modal p{margin:10px;color:#aab1bd}
-@media(max-width:760px){.menu-header,.game-header{height:70px;padding:0 16px}.menu-stats span:first-child,.header-stats span:not(.avatar){display:none}.hero-copy{width:auto;margin:10vh 22px}.hero-copy h1{font-size:49px}.collection-preview{display:none}.game-grid{grid-template-columns:1fr}.room-scene{display:block;min-height:310px;order:-1}.iso-room{inset:10% 2% 15%;transform:scale(.9)}.room-title{top:15px;left:18px}.room-progress-3d{bottom:12px}.puzzle-column{min-height:560px;padding:20px}.timer-bar{padding:0 20px}}
+:root {
+  --background: #0c1222;
+  --surface: #151e33;
+  --surface-light: #1d2943;
+  --line: #2d3a58;
+  --text-soft: #97a4bb;
+  --accent: #f2c94c;
+  --success: #56bd83;
+}
+
+.home-page, .game-page { min-height: 100vh; background: var(--background); color: #f7f9ff; }
+.home-page { position: relative; overflow: hidden; }
+.home-shade { position: absolute; inset: 0; background: radial-gradient(circle at 78% 45%, #1a2d54 0, transparent 36%); }
+.menu-header, .game-header { position: relative; z-index: 2; height: 78px; padding: 0 6vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(12,18,34,.94); }
+.brand { display: flex; align-items: center; gap: 12px; font-size: 12px; line-height: .9; letter-spacing: 2px; }
+.brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border: 2px solid var(--accent); border-radius: 9px; color: var(--accent); font-weight: 900; }
+.menu-stats, .header-stats { display: flex; align-items: center; gap: 28px; color: var(--text-soft); font-size: 9px; letter-spacing: 1px; }
+.menu-stats b, .header-stats b { display: block; margin-top: 4px; color: #fff; font-size: 12px; }
+.avatar { width: 38px; height: 38px; display: grid!important; place-items: center; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-light); font-size: 20px; }
+.icon-button { margin-right: 18px; background: none; color: #fff; font-size: 25px; }
+.game-header { justify-content: flex-start; }.header-stats { margin-left: auto; }
+
+.hero-copy { position: relative; z-index: 1; width: min(600px, 86vw); margin: 13vh 0 0 10vw; }
+.eyebrow { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: 2px; }
+.hero-copy h1 { margin: 20px 0; font-size: clamp(48px, 6vw, 82px); line-height: .94; font-weight: 900; letter-spacing: -4px; }
+.hero-copy h1 em { color: var(--accent); font-style: normal; }
+.hero-copy p { max-width: 500px; color: var(--text-soft); line-height: 1.7; }
+.play-button { width: min(440px, 100%); min-height: 72px; margin-top: 30px; padding: 0 20px; display: flex; align-items: center; gap: 18px; border-radius: 12px; background: var(--accent); color: #171300; text-decoration: none; }
+.play-button div { flex: 1; }.play-button small, .play-button b { display: block; }.play-button small { font-size: 9px; }.play-button i { font-size: 24px; }
+.menu-note { margin-top: 12px; color: #6f7c94; font-size: 11px; }
+.collection-preview { position: absolute; z-index: 2; right: 6vw; bottom: 7vh; width: 270px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.collection-preview>div:first-child { display: flex; justify-content: space-between; }.skin-row { display: flex; gap: 8px; margin-top: 14px; }.skin-row span { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 9px; background: var(--surface-light); }
+
+.timer-bar { position: relative; height: 56px; padding: 0 6vw; display: flex; align-items: center; justify-content: space-between; background: #10182b; color: var(--text-soft); font-size: 9px; letter-spacing: 1px; }
+.timer-bar b { color: var(--accent); font-size: 22px; }.timer-bar b.danger { color: #f06f67; }
+.timer-bar>i { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--accent); transition: width 1s linear; }
+.game-grid { min-height: calc(100vh - 134px); display: grid; grid-template-columns: minmax(390px, 45%) 1fr; }
+.puzzle-column { display: grid; place-items: center; padding: 28px; background: #10182a; }
+.puzzle-card, .result-card { width: min(410px, 100%); padding: 26px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); text-align: center; }
+.puzzle-top { display: flex; justify-content: space-between; margin-bottom: 24px; }.signal { color: var(--success); font-size: 8px; }
+.lock-icon { width: 55px; height: 55px; margin: 0 auto 18px; display: grid; place-items: center; border: 2px solid var(--accent); border-radius: 14px; color: var(--accent); font-size: 24px; }
+.puzzle-card h2, .result-card h2 { font-size: 24px; }.puzzle-card>p, .result-card p { margin: 9px 0 20px; color: var(--text-soft); font-size: 12px; }
+.puzzle-clue { min-height: 76px; margin-bottom: 12px; padding: 16px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 10px; background: #0d1425; color: #fff; font-size: 15px; line-height: 1.45; }
+.puzzle-card input { width: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 10px; outline: 0; background: #0d1425; color: #fff; text-align: center; }.puzzle-card input:focus { border-color: var(--accent); }
+.primary-button { width: 100%; margin-top: 12px; padding: 15px; display: flex; justify-content: space-between; border-radius: 10px; background: var(--accent); color: #171300; font-size: 11px; font-weight: 800; letter-spacing: 1px; }
+.puzzle-card small { display: block; margin-top: 10px; color: #65718a; font-size: 9px; }
+
+.room-scene { position: relative; display: grid; place-items: center; background: #111b31; }
+.room-scene::before { content: 'НОВАЯ КАРТА'; color: #263654; font-size: clamp(34px, 6vw, 80px); font-weight: 900; letter-spacing: 4px; }
+.room-title { position: absolute; top: 28px; left: 30px; padding-left: 12px; border-left: 3px solid var(--accent); }.room-title small, .room-title b { display: block; }.room-title small { color: var(--text-soft); font-size: 8px; }.room-title b { margin-top: 5px; }
+.room-progress-3d { position: absolute; left: 7%; right: 7%; bottom: 25px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(12,18,34,.9); font-size: 9px; }.room-progress-3d b { float: right; color: var(--accent); }.room-progress-3d>div { height: 4px; margin-top: 9px; border-radius: 4px; background: #28344d; overflow: hidden; }.room-progress-3d i { display: block; height: 100%; background: var(--accent); }
+.result-card>span { display: grid; place-items: center; width: 65px; height: 65px; margin: 0 auto 20px; border: 2px solid var(--accent); border-radius: 50%; color: var(--accent); font-size: 28px; }.result-card .primary-button { justify-content: center; }
+.modal-backdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; background: rgba(5,9,18,.88); }.case-modal { width: min(390px, calc(100% - 30px)); padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); text-align: center; }.case-glow { width: 100px; height: 100px; margin: 22px auto; display: grid; place-items: center; border-radius: 20px; background: var(--surface-light); font-size: 50px; }.case-modal p { margin: 10px; color: var(--text-soft); }
+.shake { animation: shake .35s; }@keyframes shake { 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+
+@media (max-width: 760px) {
+  .menu-header, .game-header { height: 68px; padding: 0 18px; }.menu-stats span:first-child, .header-stats span:not(.avatar) { display: none; }
+  .hero-copy { margin: 10vh 22px 0; }.hero-copy h1 { font-size: 48px; letter-spacing: -3px; }.collection-preview { display: none; }
+  .timer-bar { padding: 0 20px; }.game-grid { grid-template-columns: 1fr; }.room-scene { display: none; }.puzzle-column { min-height: calc(100vh - 124px); padding: 20px; }
+}
+
+.room-scene::before { content: none; }
+.backrooms-map { position: absolute; inset: 0; overflow: hidden; background: #c8b875; touch-action: none; }
+.backrooms-grid { position: absolute; inset: 0; background:
+  linear-gradient(90deg, rgba(108,91,41,.14) 2px, transparent 2px),
+  linear-gradient(rgba(108,91,41,.14) 2px, transparent 2px),
+  radial-gradient(circle at 50% 35%, #dfd18f, #b9a767 75%); background-size: 42px 42px, 42px 42px, auto; }
+.backrooms-grid::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 70px, rgba(91,79,40,.08) 72px); }
+.maze-wall { position: absolute; z-index: 2; width: 7%; border: 5px solid #75632f; background: linear-gradient(90deg, #a99654, #d1c178 55%, #958143); box-shadow: 9px 8px 0 rgba(76,63,29,.32); }
+.maze-wall-a { left: 25%; top: 0; height: 38%; }.maze-wall-b { left: 25%; bottom: 0; height: 38%; }
+.maze-wall-c { left: 62%; top: 0; height: 42%; }.maze-wall-d { left: 62%; bottom: 0; height: 34%; }
+.maze-door { position: absolute; z-index: 4; width: 7%; height: 20%; display: grid; place-items: center; border: 5px solid #51351f; background: repeating-linear-gradient(90deg, #684328 0 10px, #835639 11px 20px); box-shadow: 7px 7px 0 rgba(70,48,25,.35); transition: opacity .3s, transform .3s; }
+.maze-door span { padding: 4px; border-radius: 4px; background: #3c291c; color: #ffd85b; font-size: 7px; font-weight: 900; writing-mode: vertical-rl; }
+.door-1 { left: 25%; top: 40%; }.door-2 { left: 44%; top: 18%; transform: rotate(90deg); }.door-3 { left: 62%; top: 44%; }.door-4 { left: 78%; top: 66%; transform: rotate(90deg); }
+.maze-door.door-open { opacity: .22; transform: translateY(-25%); }.door-2.door-open,.door-4.door-open { transform: rotate(90deg) translateY(-25%); }
+.map-player { position: absolute; z-index: 8; width: 34px; height: 52px; transform: translate(-50%,-50%); filter: drop-shadow(4px 5px 2px rgba(57,47,20,.45)); }
+.runner-head { position: absolute; z-index: 3; left: 5px; width: 26px; height: 26px; border: 3px solid #172148; border-radius: 50%; background: #efb78d; }.runner-head::after { content: ''; position: absolute; left: 2px; right: 2px; top: 10px; height: 7px; border-radius: 5px; background: #202954; }
+.runner-body { position: absolute; left: 13px; top: 24px; width: 10px; height: 21px; border-radius: 5px; background: #256fc0; box-shadow: -8px 3px 0 -2px #172149, 8px 3px 0 -2px #172149; }
+.runner-legs { position: absolute; left: 9px; top: 42px; width: 18px; height: 15px; border-left: 6px solid #172149; border-right: 6px solid #172149; animation: run-legs .28s infinite alternate; }
+@keyframes run-legs { to { transform: skewX(18deg) translateY(-2px); } }
+.home-owner { position: absolute; z-index: 7; width: 47px; transform: translate(-50%,-50%); text-align: center; transition: left .08s linear, top .08s linear; }.home-owner span { display: grid; place-items: center; width: 43px; height: 43px; border: 4px solid #702925; border-radius: 50%; background: #d95b4c; font-size: 25px; box-shadow: 0 6px 0 #7e2c25; }.home-owner b { display: block; margin-top: 5px; color: #6c201b; font-size: 7px; letter-spacing: 1px; }
+.chase-warning { position: absolute; z-index: 10; top: 16px; left: 50%; transform: translateX(-50%); padding: 9px 14px; border: 3px solid #7c2823; border-radius: 8px; background: rgba(195,65,56,.94); color: #fff; font-size: 9px; font-weight: 900; letter-spacing: 1px; box-shadow: 0 5px 0 #7b2b25; }
+.walk-joystick { position: absolute; z-index: 12; left: 24px; bottom: 25px; width: 105px; height: 105px; border: 4px solid rgba(255,255,224,.75); border-radius: 50%; background: rgba(93,81,43,.58); box-shadow: inset 0 0 20px #66592f, 0 6px 0 #756432; touch-action: none; }
+.walk-joystick span { position: absolute; left: 23px; top: 23px; width: 52px; height: 52px; border: 4px solid #fff5bd; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #e6d582, #9c8846); box-shadow: 0 6px 0 #65562c; pointer-events: none; }
+.fps-corridor{position:absolute;inset:0;overflow:hidden;perspective:700px;background:#b7a968}.fps-floor{position:absolute;left:-20%;right:-20%;top:50%;bottom:-35%;transform:rotateX(63deg);transform-origin:top;background:repeating-linear-gradient(90deg,transparent 0 78px,rgba(88,74,34,.19) 80px),repeating-linear-gradient(0deg,#9f9054 0 78px,#c3b574 80px)}
+.fps-ceiling{position:absolute;left:-20%;right:-20%;top:-36%;height:86%;transform:rotateX(-63deg);transform-origin:bottom;background:repeating-linear-gradient(90deg,transparent 0 78px,rgba(88,74,34,.15) 80px),#cbbb78}
+.fps-wall{position:absolute;top:-10%;bottom:-10%;width:48%;background:repeating-linear-gradient(0deg,#c9bb7b 0 88px,#ad9d60 90px);box-shadow:inset 0 0 70px rgba(74,62,30,.35)}.fps-wall-left{left:-26%;transform:skewY(24deg)}.fps-wall-right{right:-26%;transform:skewY(-24deg)}
+.fps-door{position:absolute;z-index:2;left:43%;top:24%;width:14%;height:42%;display:grid;place-items:center;border:8px solid #68472c;background:linear-gradient(90deg,#493226,#79533a 48%,#3c2a21);box-shadow:0 0 45px rgba(52,35,21,.6)}.fps-door span{padding:5px;background:#211914;color:#ffd45a;font-size:7px;font-weight:900;text-align:center}
+.ceiling-light{position:absolute;z-index:3;left:46%;width:8%;height:4%;background:#fff4b7;box-shadow:0 0 35px 15px rgba(255,244,178,.5)}.light-one{top:5%}.light-two{top:17%;transform:scale(.65)}
+.fps-crosshair{position:absolute;z-index:15;left:50%;top:50%;width:30px;height:30px;transform:translate(-50%,-50%);opacity:.75}.fps-crosshair i{position:absolute;background:#fff;box-shadow:0 0 3px #000}.fps-crosshair i:first-child{left:14px;top:4px;width:2px;height:22px}.fps-crosshair i:last-child{left:4px;top:14px;width:22px;height:2px}
+.fps-minimap{position:absolute;z-index:16;left:16px;top:16px;width:100px;height:100px;border:4px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(45,39,22,.65);overflow:hidden;box-shadow:0 5px 0 rgba(55,46,25,.7)}.fps-minimap:before,.fps-minimap:after{content:'';position:absolute;background:rgba(255,255,255,.2)}.fps-minimap:before{left:49%;width:2px;height:100%}.fps-minimap:after{top:49%;width:100%;height:2px}.fps-minimap i{position:absolute;z-index:2;width:8px;height:8px;border-radius:50%;transform:translate(-50%,-50%)}.mini-player{background:#58d8ff;box-shadow:0 0 8px #58d8ff}.mini-owner{background:#ff4e45;box-shadow:0 0 8px #ff4e45}
+.pursuer-fps{top:58%;z-index:10;transition:left .1s linear,transform .1s linear}.pursuer-fps span{width:52px;height:62px;border-radius:45% 45% 35% 35%;font-size:30px}.pursuer-fps b{color:#541b18;text-shadow:0 1px #d59a67}
+.backrooms-map>.maze-wall,.backrooms-map>.maze-door,.backrooms-map>.backrooms-grid{display:none}
+.danger-vignette{position:absolute;z-index:18;inset:0;pointer-events:none;opacity:0;background:radial-gradient(circle,transparent 40%,rgba(190,20,18,.72));transition:opacity .25s}
+.owner-near{animation:camera-danger .13s infinite}.owner-near .danger-vignette{opacity:.75}.owner-near .chase-warning{animation:warning-pulse .45s infinite alternate}
+@keyframes camera-danger{0%{translate:-2px 1px}25%{translate:2px -2px}50%{translate:1px 2px}75%{translate:-2px -1px}100%{translate:0}}@keyframes warning-pulse{to{scale:1.07;filter:brightness(1.25)}}
+.caught-scene{animation:caught-shake .08s 8}.caught-scene .danger-vignette{opacity:1;background:rgba(184,17,18,.55)}.caught-scene .pursuer-fps{animation:owner-lunge .65s ease-in forwards}
+@keyframes caught-shake{0%{translate:-7px 3px}50%{translate:7px -4px}100%{translate:-3px 5px}}@keyframes owner-lunge{to{left:50%;top:50%;transform:translate(-50%,-50%) scale(5.5);filter:brightness(.6)}}
+.caught-overlay{position:absolute;z-index:30;inset:0;display:grid;place-content:center;text-align:center;background:rgba(67,4,7,.42);animation:caught-message .65s ease-out}.caught-overlay span{width:74px;height:74px;margin:0 auto 18px;display:grid;place-items:center;border:5px solid #fff;border-radius:50%;color:#fff;font-size:37px}.caught-overlay b{font-size:clamp(28px,5vw,58px);letter-spacing:2px;text-shadow:0 5px #6d0d10}.caught-overlay small{margin-top:9px;color:#ffd0cc;font-size:12px}
+@keyframes caught-message{0%{opacity:0;scale:1.7}45%{opacity:0}100%{opacity:1;scale:1}}
+@media (max-width: 760px) {
+  .game-grid { display: flex; flex-direction: column; }.room-scene { display: block; order: -1; min-height: 360px; }.puzzle-column { min-height: 500px; }
+  .chase-warning { top: 9px; white-space: nowrap; }.walk-joystick { width: 90px; height: 90px; left: 14px; bottom: 14px; }.walk-joystick span { left: 16px; top: 16px; }
+}
+
+/* Дополнительная глубина коридора */
+.fps-corridor{inset:-8%;perspective:900px;transform-style:preserve-3d;transition:transform .06s linear}
+.fps-corridor{cursor:grab;touch-action:none}.fps-corridor:active{cursor:grabbing}
+.fps-wall-left{transform:skewY(24deg) rotateY(12deg)}.fps-wall-right{transform:skewY(-24deg) rotateY(-12deg)}
+.fps-door{z-index:5;box-shadow:-9px 0 0 #3d291d,9px 0 0 #8d6240,0 14px 25px rgba(52,35,21,.7)}
+.light-three{top:22%;transform:scale(.38)}
+.corridor-frame{position:absolute;z-index:4;left:8%;right:8%;top:5%;bottom:5%;border:14px solid rgba(118,100,51,.72);border-bottom-width:18px;box-shadow:inset 0 0 20px rgba(54,45,23,.45),0 0 15px rgba(255,240,163,.12);pointer-events:none}
+.frame-near{transform:scale(1.18);opacity:.75}.frame-middle{transform:scale(.72);opacity:.55}.frame-far{transform:scale(.42);opacity:.4}
+.side-passage{position:absolute;z-index:4;top:31%;width:20%;height:39%;border:8px solid #766133;background:linear-gradient(90deg,#31291c,#76653d);box-shadow:inset 0 0 35px #18150f,8px 10px 0 rgba(76,61,29,.45)}
+.passage-left{left:2%;transform:skewY(12deg)}.passage-right{right:2%;transform:skewY(-12deg) scaleX(-1)}.side-passage span{position:absolute;inset:18% 22%;background:#15130f;box-shadow:inset 0 0 25px #000}
+.wall-trim{position:absolute;z-index:3;top:66%;width:44%;height:7px;background:#786437;box-shadow:0 5px 0 #5e4c29}.trim-left{left:-5%;transform:rotate(8deg)}.trim-right{right:-5%;transform:rotate(-8deg)}
+.fps-minimap{width:132px!important;height:132px!important;border-radius:12px!important}
+.mini-wall{position:absolute;z-index:1;display:block;background:#e6d58c;box-shadow:0 0 2px #4e4327}
+.fps-minimap .mini-player,.fps-minimap .mini-owner{z-index:3}
+.game-grid{min-height:calc(100vh - 78px)}
+@media(max-width:760px){.game-grid{min-height:calc(100vh - 68px)}.game-grid:not(.puzzle-is-open)>.room-scene{min-height:calc(100vh - 68px)}.puzzle-is-open>.puzzle-column{min-height:calc(100vh - 68px)}}
+.topdown-game{position:absolute;inset:0;overflow:hidden;background:#5aa85d;isolation:isolate}.topdown-world{position:absolute;left:-50%;top:-50%;width:200%;height:200%;background:linear-gradient(90deg,rgba(31,99,51,.1) 2px,transparent 2px),linear-gradient(rgba(31,99,51,.1) 2px,transparent 2px),#5aaa60;background-size:55px 55px;transition:transform .14s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.maze-room{position:absolute;z-index:1;border:3px dashed rgba(255,255,255,.2);border-radius:9px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 25px rgba(18,53,28,.2)}.maze-room span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:rgba(255,255,255,.38);font-size:11px;font-weight:900;letter-spacing:2px}.room-start{background:rgba(77,167,224,.18)}.room-office{background:rgba(248,204,65,.14)}.room-storage{background:rgba(201,125,61,.16)}.room-archive{background:rgba(137,89,190,.16)}.room-security{background:rgba(218,69,70,.16)}.room-exit{background:rgba(61,212,123,.18)}.room-exit span{color:rgba(193,255,215,.65)}
+.top-wall{position:absolute;z-index:3;display:block;min-width:12px;min-height:12px;border:3px solid #783d24;border-radius:5px;background:linear-gradient(#ec8948,#bd5b31);box-shadow:0 8px 0 #72351f}
+.top-door{position:absolute;z-index:6;min-width:22px;min-height:38px;display:grid;place-items:center;border:4px solid #5a1518;border-radius:6px;background:linear-gradient(90deg,#91252b,#e14242 50%,#8c2026);font-size:15px}.top-door.locked{box-shadow:0 7px 0 #641419,0 0 20px 7px rgba(255,35,42,.82);animation:locked-door-pulse .7s infinite alternate}.top-door.open{border-color:#1b6b3c;background:#36bd6b;color:#fff;box-shadow:0 0 16px #43dc7f;opacity:.45;transform:scale(.65)}@keyframes locked-door-pulse{to{filter:brightness(1.35);box-shadow:0 7px 0 #641419,0 0 32px 12px rgba(255,45,49,.95)}}
+.locked-zone-line{position:absolute;z-index:5;top:0;bottom:0;width:5px;display:block;background:#ff3038;box-shadow:0 0 18px 8px rgba(255,31,42,.72);animation:gate-line-pulse .65s infinite alternate}@keyframes gate-line-pulse{to{opacity:.55;box-shadow:0 0 30px 13px rgba(255,31,42,.9)}}
+.top-player,.top-owner{position:absolute;z-index:8;transform:translate(-50%,-50%);text-align:center;transition:left .13s linear,top .13s linear;will-change:left,top,transform}.top-player span,.top-owner span{display:grid;place-items:center;width:48px;height:48px;border:4px solid #fff;border-radius:50%;background:#405bc1;font-size:28px;box-shadow:0 7px 0 #24337d,0 10px 14px rgba(19,57,29,.4)}.top-player i{position:absolute;z-index:-1;left:6px;bottom:-10px;width:38px;height:13px;border-radius:50%;background:rgba(25,60,31,.5)}.top-owner span{border-color:#ffb1a7;background:#d84f45;box-shadow:0 7px 0 #7c2724}.top-owner b{display:block;margin-top:5px;color:#68221f;font-size:7px}
+.topdown-moving .top-player{animation:top-step .36s infinite alternate ease-in-out}@keyframes top-step{to{translate:0 -2px;rotate:-1deg}}
+.top-hud{position:absolute;z-index:12;left:18px;top:16px;padding:10px 12px;border:3px solid #a9dcff;border-radius:9px;background:rgba(24,69,139,.92);color:#fff;font-size:9px;font-weight:900;box-shadow:0 5px 0 #133a7a}.top-hud span{display:block;margin-top:4px;color:#ffe35a}.top-stamina{position:absolute;z-index:12;left:18px;top:73px;width:150px;height:9px;border:2px solid #fff4ad;border-radius:7px;background:#5e642f;overflow:hidden}.top-stamina i{display:block;height:100%;background:#ffd633;transition:width .1s}
+.chase-countdown{position:absolute;z-index:14;left:50%;top:18px;transform:translateX(-50%);padding:8px 16px;border:4px solid #fff0a4;border-radius:12px;background:#e35145;color:#fff;font-size:10px;font-weight:900;letter-spacing:1px;box-shadow:0 6px 0 #842b27}.chase-countdown b{display:inline-block;margin-left:8px;font-size:24px;animation:countdown-pop .7s infinite alternate}@keyframes countdown-pop{to{scale:1.25;color:#fff49a}}
+.topdown-caught{animation:caught-shake .08s 8}.topdown-caught .top-owner{z-index:25;animation:top-owner-catch .65s forwards}@keyframes top-owner-catch{to{left:50%;top:50%;scale:5}}
+@media(max-width:760px){.top-player span,.top-owner span{width:40px;height:40px;font-size:23px}.top-hud{top:9px;left:9px}}
+.roblox-view~.topdown-world,.roblox-view~.top-hud,.roblox-view~.top-stamina{display:none}.roblox-view{position:absolute;z-index:2;inset:0;overflow:hidden;background:#c3b46f;perspective:900px;touch-action:none;cursor:grab}.roblox-view:active{cursor:grabbing}.roblox-corridor{position:absolute;inset:-7%;transform-style:preserve-3d;transition:transform .08s linear}.roblox-floor{position:absolute;left:-20%;right:-20%;top:50%;bottom:-35%;transform:rotateX(62deg);transform-origin:top;background:repeating-linear-gradient(90deg,transparent 0 72px,rgba(78,65,28,.18) 74px),repeating-linear-gradient(0deg,#a49354 0 72px,#c7b978 74px)}.roblox-ceiling{position:absolute;left:-20%;right:-20%;top:-36%;height:86%;transform:rotateX(-62deg);transform-origin:bottom;background:#c9bc7c}.roblox-wall{position:absolute;top:-10%;bottom:-10%;width:48%;background:repeating-linear-gradient(0deg,#d1c483 0 86px,#ad9e60 88px);box-shadow:inset 0 0 70px rgba(64,53,24,.35)}.roblox-wall-left{left:-25%;transform:skewY(23deg)}.roblox-wall-right{right:-25%;transform:skewY(-23deg)}
+.roblox-floor{background:
+  radial-gradient(ellipse at 30% 70%,rgba(65,54,25,.2),transparent 30%),
+  repeating-linear-gradient(87deg,rgba(70,60,30,.09) 0 2px,transparent 2px 8px),
+  repeating-linear-gradient(0deg,#97894e 0 71px,#b1a363 73px);filter:saturate(.7)}
+.roblox-ceiling{background:repeating-linear-gradient(90deg,transparent 0 118px,rgba(69,61,35,.28) 120px),repeating-linear-gradient(0deg,#b9ae77 0 82px,#80764d 84px)}
+.roblox-wall{background:
+  radial-gradient(circle at 70% 25%,rgba(83,71,34,.18),transparent 24%),
+  repeating-linear-gradient(90deg,rgba(104,89,43,.11) 0 1px,transparent 1px 9px),
+  repeating-linear-gradient(0deg,#c6b878 0 86px,#95884e 88px);filter:saturate(.72)}
+.roblox-door{position:absolute;z-index:3;left:43%;top:24%;width:14%;height:42%;display:grid;place-items:center;border:9px solid #5f3f26;background:#6f4930;font-size:28px;box-shadow:-9px 0 #3c281c,9px 0 #8f633f,0 15px 30px rgba(0,0,0,.45)}.roblox-door-open{opacity:.25;transform:translateY(-45%)}.roblox-light{position:absolute;z-index:4;left:46%;height:4%;width:8%;background:#fff5b6;box-shadow:0 0 35px 16px rgba(255,244,180,.55)}.light-near{top:5%}.light-far{top:18%;scale:.55}
+.roblox-floor,.roblox-ceiling,.roblox-wall{transition:background-position .06s linear;will-change:background-position}
+.depth-frame{position:absolute;z-index:5;inset:5% 8%;border:15px solid rgba(98,83,45,.72);border-bottom-width:20px;box-shadow:inset 0 0 22px rgba(20,17,9,.55),0 0 14px rgba(255,240,168,.16);transform-origin:center;transition:transform .06s linear;pointer-events:none}.depth-near{opacity:.75}.depth-middle{opacity:.55}.depth-far{opacity:.38}
+.roblox-column{position:absolute;z-index:4;top:8%;bottom:0;width:9%;border:5px solid #716036;background:linear-gradient(90deg,#8e7d4b,#c0b173 52%,#75643b);box-shadow:12px 0 18px rgba(41,34,16,.45)}.column-left{left:12%;transform:skewY(9deg)}.column-right{right:12%;transform:skewY(-9deg);box-shadow:-12px 0 18px rgba(41,34,16,.45)}
+.roblox-passage{position:absolute;z-index:3;top:33%;width:19%;height:36%;border:9px solid #746139;background:#181610;box-shadow:inset 0 0 35px #000,8px 12px 0 rgba(48,39,18,.45)}.roblox-passage-left{left:1%;transform:skewY(13deg)}.roblox-passage-right{right:1%;transform:skewY(-13deg)}
+.block-hands{position:absolute;z-index:10;left:50%;bottom:-28px;width:440px;height:180px;transform:translateX(-50%);pointer-events:none}.block-hands i{position:absolute;bottom:0;width:88px;height:165px;border:4px solid #101827;border-radius:48% 48% 18px 18px;background:linear-gradient(90deg,#111c2e,#263955 48%,#0b1424);box-shadow:inset -18px 0 rgba(3,8,17,.38),inset 9px 0 rgba(121,145,168,.15),0 12px 25px rgba(0,0,0,.55)}.block-hands i:first-child{left:55px;transform:rotate(-20deg)}.block-hands i:last-child{right:55px;transform:rotate(20deg)}.topdown-moving .block-hands i:first-child{animation:block-hand-left .35s infinite alternate}.topdown-moving .block-hands i:last-child{animation:block-hand-right .35s infinite alternate}@keyframes block-hand-left{to{translate:18px -17px;rotate:-10deg}}@keyframes block-hand-right{to{translate:-18px 17px;rotate:10deg}}
+.roblox-crosshair{position:absolute;z-index:12;left:50%;top:50%;transform:translate(-50%,-50%);color:rgba(255,255,255,.72);font-size:25px;text-shadow:0 2px 3px #000}.roblox-owner{position:absolute;z-index:8;top:54%;text-align:center;transition:left .1s,transform .1s;filter:drop-shadow(0 12px 9px rgba(0,0,0,.55))}.roblox-owner>span{position:relative;display:block;width:62px;height:112px}.owner-head{position:absolute;z-index:2;left:13px;top:0;width:38px;height:42px;border-radius:48% 48% 42% 42%;background:linear-gradient(90deg,#8c6650,#c59574 53%,#74503f);box-shadow:inset -7px -5px rgba(61,34,28,.32)}.owner-head em{position:absolute;top:18px;width:5px;height:4px;border-radius:50%;background:#1b1110}.owner-head em:first-child{left:9px}.owner-head em:last-child{right:9px}.owner-body{position:absolute;left:5px;top:37px;width:54px;height:75px;border-radius:16px 16px 7px 7px;background:linear-gradient(90deg,#342b28,#63534c 50%,#2a2321);box-shadow:inset -10px 0 rgba(15,10,9,.3)}.roblox-owner b{display:block;color:#53201b;font-size:7px}
+.realism-overlay{position:absolute;z-index:20;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 48%,rgba(16,13,7,.45) 100%);box-shadow:inset 0 0 80px rgba(17,14,7,.35)}.realism-overlay i{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(255,245,193,.38);animation:dust-float 5s infinite linear}.realism-overlay i:nth-child(1){left:20%;top:65%}.realism-overlay i:nth-child(2){left:73%;top:28%;animation-delay:-2s}.realism-overlay i:nth-child(3){left:55%;top:78%;animation-delay:-4s}@keyframes dust-float{to{translate:18px -120px;opacity:0}}
+.roblox-light{animation:fluorescent-flicker 6s infinite}@keyframes fluorescent-flicker{0%,18%,20%,100%{filter:brightness(1)}19%{filter:brightness(.35)}76%{filter:brightness(.9)}}
+.roblox-minimap{position:absolute;z-index:13;left:14px;top:14px;width:125px;height:125px;border:5px solid rgba(255,255,255,.75);border-radius:12px;background:rgba(55,46,24,.7)}.roblox-minimap i{position:absolute;background:#ead991}.roblox-minimap b{position:absolute;width:8px;height:8px;border-radius:50%;transform:translate(-50%,-50%)}.roblox-mini-player{background:#4ad4ff;box-shadow:0 0 8px #4ad4ff}.roblox-mini-owner{background:#ff4c47;box-shadow:0 0 8px #ff4c47}.look-note{position:absolute;z-index:13;right:15px;bottom:15px;padding:7px 10px;border-radius:6px;background:rgba(39,33,19,.72);color:#fff5c2;font-size:8px;font-weight:800}
+@media(max-width:760px){.block-hands{width:310px;height:125px}.block-hands i{width:70px;height:115px}.block-hands i:first-child{left:35px}.block-hands i:last-child{right:35px}.roblox-minimap{width:95px;height:95px}.look-note{display:none}}
+.player-moving .fps-floor{filter:brightness(.96)}.player-moving:not(.owner-near) .fps-crosshair{animation:walk-crosshair .25s ease-in-out infinite alternate}
+@keyframes walk-crosshair{to{translate:0 3px}}
+.fps-floor,.fps-ceiling,.fps-wall{transition:background-position .05s linear}
+.corridor-frame{transition:transform .06s linear}
+.movement-help{position:absolute;z-index:17;right:16px;bottom:18px;padding:7px 10px;border:2px solid rgba(255,255,255,.5);border-radius:6px;background:rgba(30,26,17,.68);color:#fff7c7;font-size:8px;font-weight:800;letter-spacing:1px}
+.view-help{position:absolute;z-index:17;right:16px;bottom:50px;padding:7px 10px;border:2px solid rgba(255,255,255,.35);border-radius:6px;background:rgba(30,26,17,.58);color:#fff7c7;font-size:8px;font-weight:800;letter-spacing:1px}
+.pointer-locked .view-help{border-color:#79d9ff;color:#bceeff;background:rgba(14,48,82,.75)}.pointer-locked .fps-crosshair{opacity:1}.pointer-locked .fps-corridor{cursor:none}
+.fps-compass{position:absolute;z-index:17;left:50%;top:54px;min-width:100px;transform:translateX(-50%);padding:6px 12px;display:flex;justify-content:space-between;border-top:2px solid rgba(255,255,255,.65);background:linear-gradient(90deg,transparent,rgba(20,18,12,.65),transparent);color:#fff5c9;font-size:8px;letter-spacing:2px}.fps-compass b{color:#fff}
+.stamina-hud{position:absolute;z-index:17;left:145px;bottom:18px;width:150px;padding:8px 10px;border:2px solid rgba(255,255,255,.45);border-radius:7px;background:rgba(31,27,17,.72);color:#fff6c8;font-size:7px;font-weight:800;letter-spacing:1px}.stamina-hud b{float:right}.stamina-hud>div{height:5px;margin-top:7px;border-radius:5px;background:#4d4329;overflow:hidden}.stamina-hud i{display:block;height:100%;background:linear-gradient(90deg,#e8a72d,#ffe465);transition:width .08s linear}
+.player-sprinting .fps-corridor{transition:transform .035s linear}.player-sprinting .fps-crosshair{animation:sprint-crosshair .18s infinite alternate}.player-sprinting .danger-vignette{box-shadow:inset 0 0 65px rgba(18,12,5,.35)}
+@keyframes sprint-crosshair{to{translate:0 6px;scale:1.08}}
+@media(max-width:760px){.stamina-hud{left:112px;bottom:14px;width:125px}.fps-compass{top:45px}}
+.fps-legs{position:absolute;z-index:14;left:50%;bottom:-34px;width:220px;height:135px;transform:translateX(-50%);pointer-events:none;perspective:300px}.fps-legs i{position:absolute;bottom:0;width:55px;height:125px;border:5px solid #111b3d;border-radius:40% 40% 18px 18px;background:linear-gradient(90deg,#172650,#29427d 48%,#101d43);box-shadow:inset -10px 0 0 rgba(4,10,31,.25),0 12px 16px rgba(0,0,0,.45);transform-origin:50% 100%}.fps-leg-left{left:35px;transform:rotateX(22deg) rotate(-8deg)}.fps-leg-right{right:35px;transform:rotateX(22deg) rotate(8deg)}
+.player-moving .fps-leg-left{animation:left-step .42s infinite alternate ease-in-out}.player-moving .fps-leg-right{animation:right-step .42s infinite alternate ease-in-out}
+@keyframes left-step{to{transform:translateY(-26px) translateX(17px) rotateX(35deg) rotate(6deg);filter:brightness(1.2)}}@keyframes right-step{to{transform:translateY(-26px) translateX(-17px) rotateX(35deg) rotate(-6deg);filter:brightness(1.2)}}
+.player-sprinting .fps-leg-left,.player-sprinting .fps-leg-right{animation-duration:.24s}
+.motion-lines{position:absolute;z-index:13;inset:10% 3% 8%;pointer-events:none;opacity:0;overflow:hidden}.motion-lines i{position:absolute;width:3px;height:70px;border-radius:4px;background:linear-gradient(transparent,rgba(255,247,197,.65),transparent);transform:rotate(15deg)}.motion-lines i:nth-child(1){left:8%;top:5%}.motion-lines i:nth-child(2){left:18%;bottom:2%}.motion-lines i:nth-child(3){right:10%;top:16%;transform:rotate(-15deg)}.motion-lines i:nth-child(4){right:21%;bottom:8%;transform:rotate(-12deg)}
+.player-moving .motion-lines{opacity:.35}.player-sprinting .motion-lines{opacity:.8}.player-moving .motion-lines i{animation:motion-flow .5s linear infinite}.player-sprinting .motion-lines i{animation-duration:.25s}
+@keyframes motion-flow{from{translate:0 -90px}to{translate:0 160px}}
+@media(max-width:760px){.fps-legs{width:170px;height:105px;bottom:-36px;scale:.8}.fps-leg-left{left:20px}.fps-leg-right{right:20px}}
+@media(max-width:760px){.movement-help{display:none}.view-help{right:10px;bottom:12px;font-size:7px}}
+.game-grid:not(.puzzle-is-open){grid-template-columns:1fr}.game-grid:not(.puzzle-is-open)>.puzzle-column{display:none}.game-grid:not(.puzzle-is-open)>.room-scene{min-height:calc(100vh - 134px)}
+.interaction-prompt{position:absolute;z-index:25;left:50%;bottom:25px;transform:translateX(-50%);display:flex;align-items:center;gap:11px;padding:9px 15px;border:3px solid #fff0a8;border-radius:9px;background:rgba(44,34,18,.9);color:#fff5c5;font-size:9px;font-weight:900;letter-spacing:1px;box-shadow:0 6px 0 rgba(61,45,20,.75);animation:interaction-pulse .8s infinite alternate}
+.interaction-prompt kbd{width:34px;height:34px;display:grid;place-items:center;border:3px solid #5e481e;border-radius:7px;background:#f1cb50;color:#302407;font-size:17px;box-shadow:0 4px 0 #927223}
+@keyframes interaction-pulse{to{transform:translateX(-50%) scale(1.04);filter:brightness(1.12)}}
+@media(max-width:760px){.game-grid:not(.puzzle-is-open)>.room-scene{display:block;min-height:calc(100vh - 124px)}.interaction-prompt{bottom:130px;white-space:nowrap}.puzzle-is-open>.room-scene{display:none}.puzzle-is-open>.puzzle-column{min-height:calc(100vh - 124px)}}
+
+/* Atmosphere based on the first-person Backrooms reference. */
+.game-page .game-header{position:absolute;z-index:30;left:0;right:0;height:58px;border:0;background:linear-gradient(rgba(8,9,5,.72),transparent)}
+.game-page .game-header .brand,.game-page .game-header .avatar{display:none!important}
+.game-page .game-header .header-stats{opacity:.55}
+.game-page .game-grid,.game-page .room-scene{min-height:100vh!important}
+.roblox-view{background:#77713e;filter:saturate(.72) contrast(1.08)}
+.roblox-corridor{inset:-10%;background:#aca66b}
+.backrooms-end{position:absolute;left:35%;top:23%;width:30%;height:49%;background:linear-gradient(90deg,#3e3c20,#827d4b 46%,#282815);box-shadow:inset 0 0 55px #19190d}
+.roblox-floor{top:48%;bottom:-18%;overflow:hidden;background:linear-gradient(90deg,rgba(33,31,13,.35),transparent 22% 78%,rgba(33,31,13,.35)),repeating-linear-gradient(90deg,transparent 0 78px,rgba(45,41,17,.24) 80px),repeating-linear-gradient(87deg,rgba(35,33,14,.2) 0 2px,transparent 2px 7px),repeating-linear-gradient(0deg,#746d39 0 3px,#999154 4px 8px);filter:none;box-shadow:inset 0 65px 80px rgba(31,29,12,.48),inset 0 -30px 50px rgba(159,148,77,.16)}
+.roblox-floor::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,19,8,.42),transparent 27% 73%,rgba(20,19,8,.42)),linear-gradient(0deg,rgba(23,22,10,.3),transparent 60%);pointer-events:none}
+.floor-skirting{position:absolute;z-index:5;top:48%;width:46%;height:3%;background:linear-gradient(#716a3c,#403c20);box-shadow:0 5px 8px rgba(20,19,8,.5)}
+.floor-skirting-left{left:-10%;transform:skewY(23deg)}.floor-skirting-right{right:-10%;transform:skewY(-23deg)}
+.floor-seam{position:absolute;z-index:2;top:-10%;bottom:-10%;width:2px;background:linear-gradient(rgba(49,44,18,.15),rgba(40,36,15,.65));box-shadow:2px 0 rgba(173,159,83,.14);transform-origin:top}
+.seam-left{left:34%;transform:rotate(7deg)}.seam-right{right:34%;transform:rotate(-7deg)}
+.floor-damage{position:absolute;z-index:3;right:24%;top:58%;width:10%;height:14%;display:block;border-radius:48%;background:radial-gradient(ellipse,#373319 0 12%,#5f582a 28%,rgba(70,65,30,.2) 55%,transparent 72%);transform:rotate(-12deg)}
+.floor-damage i{position:absolute;left:48%;top:47%;width:42%;height:2px;background:#393517;transform-origin:left}
+.floor-damage i:first-child{transform:rotate(22deg)}.floor-damage i:nth-child(2){transform:rotate(-35deg)}.floor-damage i:nth-child(3){transform:rotate(72deg)}
+.depth-zone-2 .roblox-floor{filter:brightness(.86) saturate(.78)}.depth-zone-3 .roblox-floor{filter:brightness(.68) saturate(.55)}
+.carpet-stain{position:absolute;display:block;border-radius:50%;background:radial-gradient(ellipse,rgba(49,45,20,.42),rgba(67,62,27,.15) 48%,transparent 72%);filter:blur(5px)}
+.stain-left{left:19%;top:45%;width:24%;height:18%;transform:rotate(-12deg)}
+.stain-right{right:10%;top:64%;width:29%;height:22%;transform:rotate(9deg)}
+.backrooms-desk{position:absolute;z-index:6;left:20%;top:52%;width:17%;height:25%;filter:drop-shadow(10px 12px 8px rgba(16,14,6,.48));transform:skewY(2deg)}
+.backrooms-desk i,.backrooms-chair i{position:absolute;display:block;background:#62543a}
+.desk-top{left:0;top:0;width:100%;height:14%;border-radius:2px;background:linear-gradient(#847455,#54462f)!important;box-shadow:0 5px 0 #403522}
+.desk-leg{top:12%;bottom:0;width:9%;background:linear-gradient(90deg,#493c28,#746247)!important}
+.desk-leg-left{left:7%}.desk-leg-right{right:7%}
+.backrooms-chair{position:absolute;z-index:7;left:36%;top:58%;width:7%;height:20%;filter:drop-shadow(6px 8px 5px rgba(14,12,5,.5));transform:rotate(3deg)}
+.chair-back{left:12%;top:0;width:76%;height:43%;border:4px solid #51442e;background:linear-gradient(90deg,#66563b,#8a7654)!important}
+.chair-seat{left:0;top:42%;width:100%;height:14%;background:#776446!important;box-shadow:0 4px #453a29}
+.chair-leg{top:54%;bottom:0;width:10%}.chair-leg-left{left:15%}.chair-leg-right{right:15%}
+.backrooms-cabinet{position:absolute;z-index:5;right:19%;top:30%;width:12%;height:39%;border:5px solid #4d4b39;background:linear-gradient(90deg,#77745a,#a19d7b 48%,#65634e);box-shadow:-9px 12px 14px rgba(18,17,8,.5)}
+.backrooms-cabinet i{position:absolute;left:7%;right:7%;height:2px;background:#4d4b39}.backrooms-cabinet i:first-child{top:34%}.backrooms-cabinet i:nth-child(2){top:67%}
+.backrooms-cabinet b{position:absolute;right:12%;top:48%;width:5px;height:8px;border-radius:3px;background:#363529}
+.backrooms-sofa{position:absolute;z-index:5;right:33%;top:52%;width:18%;height:19%;filter:drop-shadow(-7px 10px 7px rgba(16,14,7,.5));transform:scale(.82)}
+.backrooms-sofa i{position:absolute;display:block;border:4px solid #47472d;background:linear-gradient(#77764d,#575738)}
+.backrooms-sofa i:first-child{left:7%;right:7%;top:0;height:58%;border-radius:10px 10px 3px 3px}.backrooms-sofa i:nth-child(2){left:0;right:0;top:50%;height:37%;border-radius:8px}
+.backrooms-sofa b{position:absolute;bottom:0;width:8%;height:18%;background:#3f3929}.backrooms-sofa b:nth-of-type(1){left:12%}.backrooms-sofa b:nth-of-type(2){right:12%}
+.backrooms-lamp{position:absolute;z-index:6;right:10%;top:38%;width:7%;height:34%;filter:drop-shadow(5px 8px 6px rgba(15,13,6,.55))}
+.backrooms-lamp i{position:absolute;left:45%;top:25%;bottom:5%;width:8%;background:#494536}.backrooms-lamp b{position:absolute;left:5%;top:0;width:90%;height:30%;clip-path:polygon(22% 0,78% 0,100% 100%,0 100%);background:#bbb074;box-shadow:0 0 20px rgba(255,238,151,.32)}.backrooms-lamp span{position:absolute;left:18%;right:18%;bottom:0;height:6%;border-radius:50%;background:#3f3b2d}
+.backrooms-boxes{position:absolute;z-index:6;left:8%;top:61%;width:13%;height:17%;filter:drop-shadow(5px 8px 5px rgba(18,15,7,.45))}
+.backrooms-boxes i{position:absolute;display:block;border:3px solid #66522e;background:linear-gradient(135deg,#9c8150,#746038)}
+.backrooms-boxes i:first-child{left:0;bottom:0;width:58%;height:58%}.backrooms-boxes i:nth-child(2){right:0;bottom:0;width:48%;height:76%}.backrooms-boxes i:nth-child(3){left:18%;top:0;width:43%;height:45%}
+@media(max-width:760px){.backrooms-desk{left:13%;width:23%}.backrooms-chair{left:37%;width:9%}.backrooms-cabinet{right:11%;width:16%}}
+.roblox-ceiling{background:repeating-linear-gradient(90deg,transparent 0 118px,rgba(58,57,34,.5) 120px 123px),repeating-linear-gradient(0deg,#b4b17c 0 82px,#747249 84px 87px)}
+.roblox-wall{background:radial-gradient(circle at 60% 25%,rgba(75,72,34,.2),transparent 25%),repeating-linear-gradient(90deg,rgba(72,68,34,.11) 0 1px,transparent 1px 8px),#afa96e;filter:none}
+.depth-frame{border-color:rgba(108,103,61,.88);box-shadow:inset 0 0 28px rgba(18,18,8,.75),0 0 12px rgba(231,226,150,.1)}
+.roblox-column{border:0;background:linear-gradient(90deg,#6e693d,#b8b276 48%,#777241);box-shadow:13px 0 20px rgba(31,30,13,.55)}
+.column-far-left{left:31%;top:22%;bottom:20%;width:6%;transform:scale(.68)}
+.column-far-right{right:31%;top:22%;bottom:20%;width:6%;transform:scale(.68)}
+.roblox-passage{border-color:#777246;background:#0c0d08;box-shadow:inset 0 0 38px #000}
+.roblox-door{border-color:#4c4426;background:#17160d;font-size:0}
+.roblox-crosshair{width:5px;height:5px;border:1px solid rgba(255,255,231,.8);border-radius:50%;background:rgba(28,28,17,.5);font-size:0}
+.roblox-owner{filter:brightness(.58) drop-shadow(0 12px 12px #000)}
+.look-note{right:50%;bottom:20px;transform:translateX(50%);background:rgba(15,15,8,.45);color:rgba(255,252,215,.7);font-weight:600;letter-spacing:.4px;transition:opacity .2s}
+.topdown-moving .look-note{opacity:0}
+.chase-countdown{top:66px;border:1px solid rgba(255,248,194,.4);border-radius:4px;background:rgba(24,22,11,.55);box-shadow:none;color:rgba(255,250,214,.75)}
+.chase-countdown b{font-size:16px;animation:none}
+.camera-noise{position:absolute;z-index:21;inset:0;pointer-events:none;opacity:.09;background-image:repeating-radial-gradient(circle at 30% 20%,transparent 0 1px,#fff 1px 2px);background-size:5px 5px;mix-blend-mode:soft-light}
+.realism-overlay{background:radial-gradient(circle,transparent 38%,rgba(10,11,5,.58) 100%);box-shadow:inset 0 0 95px rgba(8,9,4,.42)}
+@media(max-width:760px){.game-page .game-header{height:48px}.look-note{bottom:110px;display:block;width:max-content;max-width:80vw;text-align:center}.chase-countdown{top:52px}}
+
+/* “4D” immersion: head movement, breathing light and proximity distortion. */
+.topdown-moving .roblox-corridor{animation:immersive-head-bob .42s infinite ease-in-out}
+.topdown-moving .realism-overlay{animation:immersive-breath 2.4s infinite ease-in-out}
+.light-bloom{position:absolute;z-index:6;left:35%;right:35%;top:-8%;height:34%;pointer-events:none;background:radial-gradient(ellipse,rgba(255,251,184,.2),transparent 70%);animation:light-breathe 3.8s infinite ease-in-out}
+.danger-pulse{position:absolute;z-index:19;inset:0;pointer-events:none;opacity:0;box-shadow:inset 0 0 90px rgba(108,8,4,.85)}
+.danger-near .danger-pulse{opacity:.35;animation:danger-heartbeat 1.25s infinite}
+.danger-close .danger-pulse{opacity:.7;animation:danger-heartbeat .55s infinite}
+.danger-close .roblox-corridor{animation:reality-slip .12s infinite alternate}
+.danger-close .camera-noise{opacity:.24;animation:noise-jump .16s steps(2) infinite}
+.danger-close .roblox-owner{filter:brightness(.42) contrast(1.5) drop-shadow(0 0 18px #53120d)}
+@keyframes immersive-head-bob{0%,100%{translate:0 0;rotate:0deg}25%{translate:-2px 3px;rotate:-.15deg}75%{translate:2px -2px;rotate:.15deg}}
+@keyframes immersive-breath{50%{box-shadow:inset 0 0 120px rgba(8,9,4,.55)}}
+@keyframes light-breathe{0%,100%{opacity:.55;scale:1}50%{opacity:1;scale:1.08}}
+@keyframes danger-heartbeat{0%,55%,100%{scale:1;opacity:.2}62%{scale:1.015;opacity:.8}70%{scale:1;opacity:.3}77%{scale:1.01;opacity:.65}}
+@keyframes reality-slip{from{translate:-2px 1px;filter:hue-rotate(-3deg)}to{translate:2px -1px;filter:hue-rotate(4deg)}}
+@keyframes noise-jump{to{background-position:7px -11px}}
+@media(prefers-reduced-motion:reduce){.topdown-moving .roblox-corridor,.topdown-moving .realism-overlay,.light-bloom,.danger-pulse,.danger-close .roblox-corridor,.danger-close .camera-noise{animation:none}}
+
+/* Full-HD presentation: the browser renders at its native resolution, up to 1920×1080 and beyond. */
+.game-page{width:100vw;height:100dvh;overflow:hidden}
+.game-page .game-grid,.game-page .room-scene,.topdown-game,.roblox-view{width:100%;height:100dvh}
+.roblox-corridor{backface-visibility:hidden;transform-style:preserve-3d;will-change:transform;image-rendering:auto}
+.roblox-wall,.roblox-floor,.roblox-ceiling{background-size:auto,160px 160px,16px 16px;backface-visibility:hidden}
+.camera-noise{background-size:3px 3px;opacity:.06}
+
+/* Every depth layer reacts independently, producing a stronger “4D” parallax effect. */
+.topdown-moving .backrooms-desk{animation:furniture-depth-left .42s infinite alternate ease-in-out}
+.topdown-moving .backrooms-chair{animation:furniture-depth-right .42s -.18s infinite alternate ease-in-out}
+.topdown-moving .backrooms-cabinet{animation:furniture-depth-right .5s infinite alternate ease-in-out}
+.topdown-moving .backrooms-sofa{animation:furniture-depth-left .5s -.2s infinite alternate ease-in-out}
+.topdown-moving .backrooms-lamp{animation:lamp-depth .55s infinite alternate ease-in-out}
+.topdown-moving .backrooms-boxes{animation:furniture-depth-left .36s -.12s infinite alternate ease-in-out}
+.topdown-moving .carpet-stain{animation:floor-depth .38s infinite linear}
+.topdown-moving .roblox-light{animation:fluorescent-flicker 6s infinite,light-travel .42s infinite alternate ease-in-out}
+@keyframes furniture-depth-left{to{translate:-3px 4px;scale:1.015}}
+@keyframes furniture-depth-right{to{translate:3px 3px;scale:1.012}}
+@keyframes lamp-depth{to{translate:2px 4px;rotate:.4deg}}
+@keyframes floor-depth{to{translate:0 7px}}
+@keyframes light-travel{to{translate:0 2px;scale:1.025}}
+@media(min-width:1600px) and (min-height:900px){
+  .roblox-corridor{inset:-8%;filter:contrast(1.03)}
+  .roblox-crosshair{width:6px;height:6px}
+  .look-note{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .topdown-moving .backrooms-desk,.topdown-moving .backrooms-chair,.topdown-moving .backrooms-cabinet,
+  .topdown-moving .backrooms-sofa,.topdown-moving .backrooms-lamp,.topdown-moving .backrooms-boxes,
+  .topdown-moving .carpet-stain,.topdown-moving .roblox-light{animation:none}
+}
+
+/* The complete maze is split into reactive 4D zones tied to player coordinates. */
+.roblox-view,.roblox-wall,.roblox-floor,.roblox-ceiling,.backrooms-end{transition:background .8s ease,filter .8s ease,opacity .5s ease}
+.map-zone-0{--zone-light:#fff1a7;--zone-shadow:#544b24}
+.map-zone-1{--zone-light:#e6e3a1;--zone-shadow:#4a4928}
+.map-zone-2{--zone-light:#dcc887;--zone-shadow:#50401f}
+.map-zone-3{--zone-light:#c8d39a;--zone-shadow:#394628}
+.map-zone-4{--zone-light:#d6d1ad;--zone-shadow:#34382c}
+.roblox-view[class*="map-zone-"] .roblox-light{background:var(--zone-light);box-shadow:0 0 42px 18px color-mix(in srgb,var(--zone-light) 58%,transparent)}
+.roblox-view[class*="map-zone-"] .backrooms-end{box-shadow:inset 0 0 65px var(--zone-shadow)}
+.map-zone-1 .roblox-wall{filter:hue-rotate(7deg) saturate(.72)}.map-zone-1 .backrooms-sofa{display:none}
+.map-zone-2 .roblox-wall{filter:sepia(.18) brightness(.9)}.map-zone-2 .backrooms-desk{left:55%;scale:.8}.map-zone-2 .backrooms-cabinet{right:7%}
+.map-zone-3 .roblox-wall{filter:hue-rotate(20deg) brightness(.82)}.map-zone-3 .backrooms-chair{left:16%}.map-zone-3 .backrooms-boxes{left:64%}
+.map-zone-4 .roblox-wall{filter:saturate(.45) brightness(.76)}.map-zone-4 .backrooms-lamp{right:48%}.map-zone-4 .backrooms-sofa{right:8%}
+.depth-zone-0 .column-far-left,.depth-zone-0 .column-far-right{opacity:.35}
+.depth-zone-1 .backrooms-desk,.depth-zone-1 .backrooms-chair{filter:brightness(.8) drop-shadow(10px 12px 8px rgba(16,14,6,.55))}
+.depth-zone-2 .roblox-passage{height:42%;top:29%}.depth-zone-2 .backrooms-boxes{scale:.82}
+.depth-zone-3 .roblox-corridor{filter:brightness(.72) contrast(1.13)}.depth-zone-3 .roblox-light{opacity:.62}
+.depth-zone-3 .camera-noise{opacity:.13}
+
+/* Aged paint layers on both corridor walls. */
+.wall-paint{position:absolute;z-index:3;top:5%;bottom:40%;width:25%;pointer-events:none;opacity:.68;filter:drop-shadow(0 2px 1px rgba(47,43,20,.35))}
+.wall-paint-left{left:-1%;transform:skewY(22deg)}.wall-paint-right{right:-1%;transform:skewY(-22deg)}
+.wall-paint i{position:absolute;display:block;background:var(--zone-light,#d7cf88);mix-blend-mode:soft-light}
+.wall-paint i:first-child{left:8%;top:12%;width:67%;height:25%;clip-path:polygon(3% 8%,82% 0,100% 29%,91% 83%,55% 72%,31% 100%,0 76%)}
+.wall-paint i:nth-child(2){right:0;top:53%;width:54%;height:31%;clip-path:polygon(11% 0,100% 12%,85% 81%,53% 72%,24% 100%,0 56%)}
+.wall-paint b{position:absolute;left:28%;top:42%;width:38%;height:3px;background:#625d35;box-shadow:12px 13px 0 -1px #777044,-9px 27px 0 -1px #57532f;transform:rotate(-8deg);opacity:.48}
+.map-zone-1 .wall-paint{filter:hue-rotate(12deg);opacity:.58}.map-zone-2 .wall-paint{filter:sepia(.35);opacity:.74}
+.map-zone-3 .wall-paint{filter:hue-rotate(32deg);opacity:.52}.map-zone-4 .wall-paint{filter:saturate(.35);opacity:.4}
+.danger-close .wall-paint{animation:paint-shiver .14s infinite alternate}
+@keyframes paint-shiver{to{translate:1px -1px;filter:contrast(1.3)}}
+
+/* Darker horror lighting while keeping the route readable. */
+.roblox-view{background:#34351f;filter:saturate(.58) contrast(1.16) brightness(.72)}
+.roblox-corridor{filter:brightness(.78) contrast(1.12)}
+.roblox-wall{box-shadow:inset 0 0 105px rgba(10,11,5,.56)}
+.roblox-floor{box-shadow:inset 0 80px 100px rgba(10,11,5,.62),inset 0 -35px 65px rgba(13,14,7,.42)}
+.roblox-ceiling{filter:brightness(.64)}
+.roblox-light{opacity:.62;box-shadow:0 0 25px 10px rgba(231,224,142,.28)}
+.light-far{opacity:.32}
+.backrooms-end{filter:brightness(.58);box-shadow:inset 0 0 80px #080904}
+.realism-overlay{background:radial-gradient(circle at 50% 46%,transparent 22%,rgba(7,8,4,.35) 58%,rgba(3,4,2,.82) 100%);box-shadow:inset 0 0 145px rgba(2,3,1,.72)}
+.light-bloom{opacity:.38}
+.camera-noise{opacity:.1;mix-blend-mode:overlay}
+.backrooms-desk,.backrooms-chair,.backrooms-cabinet,.backrooms-sofa,.backrooms-lamp,.backrooms-boxes{filter:brightness(.66) drop-shadow(10px 14px 10px rgba(0,0,0,.72))}
+.danger-near{filter:saturate(.48) contrast(1.22) brightness(.62)}
+.danger-close{filter:saturate(.35) contrast(1.32) brightness(.5)}
+.danger-close .roblox-light{animation:dark-flicker .18s steps(2) infinite}
+@keyframes dark-flicker{0%,100%{opacity:.58}45%{opacity:.12}55%{opacity:.4}72%{opacity:.05}}
+
+/* Glowing eyes and a weak player-side light for the darkest rooms. */
+.owner-head em{width:8px;height:8px;background:#fff;border:1px solid #ff1508;box-shadow:0 0 5px #fff,0 0 10px #ff1b0c,0 0 22px #ff1005,0 0 42px #e60000}
+.roblox-owner::before{content:"";position:absolute;z-index:-1;left:50%;top:19px;width:145px;height:105px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(ellipse,rgba(255,18,7,.62),rgba(210,0,0,.26) 34%,rgba(125,0,0,.09) 58%,transparent 75%);filter:blur(7px)}
+.roblox-view::after{content:"";position:absolute;z-index:7;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 58%,rgba(238,226,151,.1) 0,rgba(196,186,116,.055) 24%,transparent 53%);mix-blend-mode:screen}
+.danger-near .owner-head em{box-shadow:0 0 7px #fff,0 0 16px #ff1708,0 0 34px #ff0500,0 0 58px #d90000}
+.danger-close .owner-head em{box-shadow:0 0 9px #fff,0 0 22px #ff1305,0 0 48px #ff0000,0 0 80px #cf0000}
+
+/* Brighter navigation light without losing the horror mood. */
+.roblox-view{filter:saturate(.64) contrast(1.1) brightness(.9)}
+.roblox-corridor{filter:brightness(.93) contrast(1.07)}
+.roblox-ceiling{filter:brightness(.82)}
+.roblox-light{opacity:.88;box-shadow:0 0 38px 17px rgba(246,238,163,.48)}
+.light-far{opacity:.58}
+.light-bloom{opacity:.62}
+.roblox-view::after{background:radial-gradient(ellipse at 50% 58%,rgba(247,236,166,.18) 0,rgba(210,199,128,.1) 29%,transparent 61%)}
+.realism-overlay{background:radial-gradient(circle at 50% 46%,transparent 32%,rgba(7,8,4,.22) 66%,rgba(3,4,2,.68) 100%)}
+.danger-near{filter:saturate(.54) contrast(1.16) brightness(.75)}
+.danger-close{filter:saturate(.44) contrast(1.24) brightness(.64)}
+
+/* “5D” time layer: the maze slowly changes while the player remains inside it. */
+.roblox-view,.roblox-corridor,.backrooms-desk,.backrooms-chair,.backrooms-cabinet,.backrooms-sofa,.backrooms-lamp,.backrooms-boxes{transition:filter 2.4s ease,translate 2.4s ease,scale 2.4s ease,opacity 2.4s ease}
+.time-phase-1 .roblox-corridor{filter:hue-rotate(5deg) brightness(.88)}
+.time-phase-1 .backrooms-desk{translate:8px 0}.time-phase-1 .backrooms-chair{translate:-6px 3px}
+.time-phase-1 .backrooms-lamp{translate:0 -5px}.time-phase-1 .column-far-left{opacity:.18}
+.time-phase-1 .backrooms-end{filter:brightness(.42);scale:.96}
+.time-phase-2 .roblox-corridor{filter:hue-rotate(-7deg) brightness(.98) contrast(1.12)}
+.time-phase-2 .backrooms-sofa{translate:-10px 2px}.time-phase-2 .backrooms-boxes{translate:12px -2px}
+.time-phase-2 .backrooms-cabinet{translate:-5px 0}.time-phase-2 .column-far-right{opacity:.2}
+.time-phase-2 .roblox-passage-left{width:15%;background:#050603}.time-phase-2 .roblox-passage-right{width:23%}
+.time-phase-2 .camera-noise{opacity:.14}
+.time-phase-1 .light-bloom{filter:hue-rotate(12deg)}.time-phase-2 .light-bloom{filter:hue-rotate(-10deg)}
+
+/* Roblox-style free camera and first/third-person switching. */
+.camera-switch{position:absolute;z-index:31;right:16px;top:68px;padding:9px 12px;border:1px solid rgba(255,248,194,.42);border-radius:6px;background:rgba(14,15,8,.7);color:#fff9d2;font-size:9px;font-weight:800;letter-spacing:1px;box-shadow:0 5px 15px rgba(0,0,0,.35)}
+.camera-switch:hover{background:rgba(54,53,28,.82);border-color:#fff1a4}
+.roblox-view:active{cursor:grabbing}.roblox-view{cursor:grab}
+.camera-third .roblox-corridor{scale:.9;transform-origin:center 45%}
+.third-person-player{position:absolute;z-index:15;left:50%;bottom:3%;width:74px;height:185px;transform:translateX(-50%);filter:drop-shadow(0 15px 10px rgba(0,0,0,.65));pointer-events:none}
+.third-person-player i{position:absolute;z-index:2;left:17px;top:0;width:40px;height:43px;border-radius:45%;background:linear-gradient(90deg,#b98968,#d6aa83 52%,#93664d)}
+.third-person-player b{position:absolute;left:10px;top:38px;width:54px;height:82px;border-radius:12px 12px 4px 4px;background:linear-gradient(90deg,#101a2f,#293d63 50%,#0b1427)}
+.third-person-player span{position:absolute;bottom:0;width:24px;height:75px;border-radius:6px 6px 10px 10px;background:#17294e}
+.third-person-player span:first-of-type{left:11px}.third-person-player span:last-of-type{right:11px}
+.topdown-moving .third-person-player{animation:third-person-step .32s infinite alternate ease-in-out}
+.camera-third .roblox-crosshair{opacity:.45}
+@keyframes third-person-step{to{translate:0 -5px;rotate:.7deg}}
+@media(max-width:760px){.camera-switch{right:10px;top:54px}.third-person-player{scale:.82;bottom:0}}
+
+/* Chunkier Roblox-inspired materials and shapes. */
+.roblox-wall{background-image:radial-gradient(circle,rgba(255,245,169,.16) 0 2px,transparent 2.5px),linear-gradient(90deg,rgba(67,63,31,.12) 1px,transparent 1px),linear-gradient(#aaa568,#aaa568);background-size:24px 24px,96px 100%,100% 100%;border-color:#6d683c}
+.roblox-floor{background-image:radial-gradient(circle,rgba(45,41,17,.32) 0 2px,transparent 2.5px),linear-gradient(90deg,rgba(49,45,19,.2) 2px,transparent 2px),linear-gradient(#858047,#858047);background-size:28px 28px,112px 100%,100% 100%}
+.roblox-ceiling{background-image:linear-gradient(90deg,transparent 0 116px,#555333 118px 122px),linear-gradient(0deg,transparent 0 80px,#555333 82px 86px),linear-gradient(#aaa873,#aaa873);background-size:122px 86px}
+.roblox-column{border:4px solid #68643c;border-radius:2px;background:linear-gradient(90deg,#777143,#bdb679 50%,#716c40)}
+.backrooms-desk i,.backrooms-chair i,.backrooms-cabinet,.backrooms-sofa i,.backrooms-boxes i{border-radius:1px!important}
+.roblox-passage,.roblox-door{border-width:10px;border-radius:1px}
+.camera-switch{border-width:2px;border-radius:4px;box-shadow:0 4px 0 rgba(0,0,0,.55)}
+
+/* Real-time 3D maze renderer. */
+.backrooms-canvas{position:absolute;z-index:1;inset:0;width:100%;height:100%;display:block;background:#242518}
+.roblox-view>.roblox-corridor{display:none}
+.roblox-view>.roblox-owner{display:none}
+.camera-third .backrooms-canvas{transform:scale(.94);filter:brightness(.9);transition:transform .25s ease}
+
+/* Visible 100-point sprint system for keyboard and touch controls. */
+.sprint-hud{position:absolute;z-index:32;left:18px;bottom:20px;width:190px;padding:9px 11px;border:2px solid rgba(255,244,164,.52);border-radius:6px;background:rgba(12,14,8,.76);color:#fff8c4;font-size:8px;font-weight:900;letter-spacing:1px;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.sprint-hud span{display:inline-block}.sprint-hud>b{float:right;color:#fff;font-size:8px}
+.sprint-hud>i{display:block;height:7px;margin-top:7px;border-radius:5px;background:#3d3b22;overflow:hidden}
+.sprint-hud em{display:block;height:100%;background:linear-gradient(90deg,#d89d29,#ffe267);transition:width .08s linear}
+.sprint-exhausted{border-color:rgba(255,74,55,.7);color:#ff8b75}.sprint-exhausted em{background:#dd392b}
+.sprint-button{position:absolute;z-index:33;right:20px;bottom:22px;width:68px;height:68px;border:3px solid rgba(255,247,194,.65);border-radius:50%;background:rgba(48,45,23,.78);color:#fff6bd;font-size:10px;font-weight:900;box-shadow:0 6px 0 rgba(0,0,0,.5);touch-action:none}
+.sprint-button:active{translate:0 4px;box-shadow:0 2px 0 rgba(0,0,0,.5);background:#746b32}.sprint-button:disabled{opacity:.38}
+@media(min-width:761px){.sprint-button{display:none}}
+@media(max-width:760px){.sprint-hud{left:10px;bottom:112px;width:155px}.sprint-button{right:20px;bottom:112px}}
+
+/* Objective arrow, hack prompt and finish portal navigation. */
+.portal-compass{position:absolute;z-index:34;left:50%;top:64px;display:flex;flex-direction:column;align-items:center;gap:5px;transform:translateX(-50%);color:#ffc64d;text-shadow:0 2px 8px #000;pointer-events:none}
+.portal-compass i{display:block;font-style:normal;font-size:30px;line-height:1;filter:drop-shadow(0 0 7px #f39b23);transition:transform .12s linear}
+.portal-compass span{padding:5px 9px;border:1px solid rgba(255,190,62,.5);border-radius:5px;background:rgba(15,13,7,.7);font-size:8px;font-weight:900;letter-spacing:1px}
+.portal-ready{color:#56ffe2}.portal-ready i{filter:drop-shadow(0 0 9px #19e5d0)}.portal-ready span{border-color:rgba(67,255,224,.55)}
+.hack-prompt{position:absolute;z-index:35;left:50%;bottom:25%;display:flex;align-items:center;gap:10px;transform:translateX(-50%);padding:10px 15px;border:2px solid #eeb743;border-radius:7px;background:rgba(20,16,7,.9);color:#ffe28a;font-size:10px;font-weight:900;letter-spacing:1px;animation:hack-prompt-pulse .8s infinite alternate}
+.hack-prompt kbd{width:34px;height:34px;display:grid;place-items:center;border-radius:5px;background:#e8b537;color:#211704;font-size:17px;box-shadow:0 4px #825d1d}
+@keyframes hack-prompt-pulse{to{filter:brightness(1.18);scale:1.025}}
+@media(max-width:760px){.portal-compass{top:53px}.hack-prompt{bottom:36%}}
+
+/* Current themed room and its unique enemy. */
+.enemy-name{position:absolute;z-index:34;left:18px;top:68px;padding:7px 10px;border-left:3px solid #ff3828;background:rgba(12,10,8,.66);color:#c9c2a6;font-size:8px;font-weight:800;letter-spacing:1px;pointer-events:none}
+.enemy-name b{display:block;margin-top:3px;color:#ff5a42;font-size:12px}
+.enemy-ghost{border-color:#b8ffff}.enemy-ghost b{color:#d2ffff}.enemy-doll{border-color:#ff9aac}.enemy-doll b{color:#ffb3c0}
+.enemy-robot{border-color:#ffb52e}.enemy-robot b{color:#ffd06d}.enemy-shadow{border-color:#b04dff}.enemy-shadow b{color:#d393ff}
+@media(max-width:760px){.enemy-name{left:10px;top:54px}}

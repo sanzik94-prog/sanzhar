@@ -7,7 +7,7 @@ import { getEnemyTheme } from '../lib/enemies';
 interface Point { x: number; y: number; }
 interface BackroomsMapProps { solved: number; total: number; room: number; onCaught: () => void; onFinish: () => void; }
 const PLAYER_WALK_SPEED = .68;
-const OWNER_SPEED = .10;
+const OWNER_SPEED = PLAYER_WALK_SPEED;
 
 export function BackroomsMap({ onCaught, onFinish, room }: BackroomsMapProps) {
   const [player, setPlayer] = useState<Point>({ x: 100, y: 184 });
@@ -35,6 +35,7 @@ export function BackroomsMap({ onCaught, onFinish, room }: BackroomsMapProps) {
   const finishHandler = useRef(onFinish);
   const portalOpenRef = useRef(false);
   const finishedOnce = useRef(false);
+  const hackTriggered = useRef(false);
   caughtHandler.current = onCaught;
   finishHandler.current = onFinish;
   const unlocked = mazeDoors.length;
@@ -75,6 +76,16 @@ export function BackroomsMap({ onCaught, onFinish, room }: BackroomsMapProps) {
     window.addEventListener('keydown', down); window.addEventListener('keyup', up);
     return () => { window.removeEventListener('keydown', down); window.removeEventListener('keyup', up); };
   }, []);
+
+  useEffect(() => {
+    const distance = Math.hypot(player.x - FINISH_PORTAL.x, player.y - FINISH_PORTAL.y);
+    if (distance < 11 && !portalOpen && !hackTriggered.current) {
+      hackTriggered.current = true;
+      setHackOpen(true);
+    } else if (distance > 15) {
+      hackTriggered.current = false;
+    }
+  }, [player, portalOpen]);
 
   useEffect(() => {
     function openHack(event: KeyboardEvent) {

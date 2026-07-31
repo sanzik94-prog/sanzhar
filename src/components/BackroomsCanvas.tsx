@@ -74,7 +74,7 @@ export function BackroomsCanvas({ player, owner, yaw, pitch, portalOpen, enemyTh
     drawBackroomsCeiling(context, width, horizon, scale, enemyTheme);
     const floor = context.createLinearGradient(0, horizon, 0, height);
     floor.addColorStop(0, enemyTheme.floor);
-    floor.addColorStop(1, '#11130f');
+    floor.addColorStop(1, '#27291c');
     context.fillStyle = floor;
     context.fillRect(0, horizon, width, height - horizon);
 
@@ -85,7 +85,7 @@ export function BackroomsCanvas({ player, owner, yaw, pitch, portalOpen, enemyTh
       const rawDistance = castRay(player, heading + rayOffset);
       const distance = rawDistance * Math.cos(rayOffset);
       const wallHeight = Math.min(height * 1.7, height * 5.2 / Math.max(distance, 1));
-      const light = Math.max(.28, 1 - distance / 110);
+      const light = Math.max(.42, 1.12 - distance / 125);
       const [red, green, blue] = enemyTheme.wall;
       context.fillStyle = `rgb(${Math.round(red * light)},${Math.round(green * light)},${Math.round(blue * light)})`;
       context.fillRect(x, horizon - wallHeight / 2, rayWidth + 1, wallHeight);

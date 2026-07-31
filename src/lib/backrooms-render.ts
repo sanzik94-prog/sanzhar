@@ -9,7 +9,7 @@ export function drawBackroomsCeiling(
   theme: EnemyTheme,
 ) {
   const ceiling = context.createLinearGradient(0, 0, 0, horizon);
-  ceiling.addColorStop(0, '#171819');
+  ceiling.addColorStop(0, '#303127');
   ceiling.addColorStop(1, theme.ceiling);
   context.fillStyle = ceiling;
   context.fillRect(0, 0, width, horizon);
@@ -32,7 +32,7 @@ export function drawBackroomsCeiling(
   for (const light of [{ x: .5, y: .13, w: .13 }, { x: .43, y: .32, w: .08 }]) {
     context.shadowColor = theme.accent;
     context.shadowBlur = 28 * scale;
-    context.fillStyle = 'rgba(255, 249, 190, .82)';
+    context.fillStyle = 'rgba(255, 249, 200, .96)';
     context.fillRect(width * (light.x - light.w / 2), horizon * light.y, width * light.w, 7 * scale);
   }
   context.shadowBlur = 0;

@@ -59,10 +59,12 @@ export function RobloxFirstPerson({
     function lockedLook(event: MouseEvent) {
       if (document.pointerLockElement !== viewRef.current) return;
       const current = lookRef.current;
-      onLookRef.current({
+      const next = {
         x: (current.x - event.movementX * .18 + 360) % 360,
         y: Math.max(-55, Math.min(55, current.y - event.movementY * .14)),
-      });
+      };
+      lookRef.current = next;
+      onLookRef.current(next);
     }
     window.addEventListener('keydown', toggleView);
     document.addEventListener('mousemove', lockedLook);
@@ -87,10 +89,13 @@ export function RobloxFirstPerson({
     const x = event.clientX - lastPointer.current.x;
     const y = event.clientY - lastPointer.current.y;
     lastPointer.current = { x: event.clientX, y: event.clientY };
-    onLook({
-      x: (look.x - x * .17 + 360) % 360,
-      y: Math.max(-55, Math.min(55, look.y - y * .13)),
-    });
+    const current = lookRef.current;
+    const next = {
+      x: (current.x - x * .17 + 360) % 360,
+      y: Math.max(-55, Math.min(55, current.y - y * .13)),
+    };
+    lookRef.current = next;
+    onLook(next);
   }
 
   return (

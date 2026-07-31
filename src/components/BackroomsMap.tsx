@@ -7,7 +7,7 @@ import { getEnemyTheme } from '../lib/enemies';
 interface Point { x: number; y: number; }
 interface BackroomsMapProps { solved: number; total: number; room: number; onCaught: () => void; onFinish: () => void; }
 const PLAYER_WALK_SPEED = .68;
-const OWNER_SPEED = PLAYER_WALK_SPEED;
+const OWNER_SPEED = .74;
 
 export function BackroomsMap({ onCaught, onFinish, room }: BackroomsMapProps) {
   const [player, setPlayer] = useState<Point>({ x: 100, y: 184 });

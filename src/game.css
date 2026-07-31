@@ -427,3 +427,13 @@
 .enemy-ghost{border-color:#b8ffff}.enemy-ghost b{color:#d2ffff}.enemy-doll{border-color:#ff9aac}.enemy-doll b{color:#ffb3c0}
 .enemy-robot{border-color:#ffb52e}.enemy-robot b{color:#ffd06d}.enemy-shadow{border-color:#b04dff}.enemy-shadow b{color:#d393ff}
 @media(max-width:760px){.enemy-name{left:10px;top:54px}}
+
+@media(max-width:760px){
+  .roblox-view{touch-action:none;overscroll-behavior:none;user-select:none;-webkit-user-select:none}
+  .backrooms-canvas{touch-action:none}
+  .roblox-crosshair{width:8px;height:8px;opacity:.72}
+}
+
+/* Brighter ambient exposure for the 3D canvas. */
+.roblox-view{filter:saturate(.72) contrast(1.06) brightness(1.04)}
+.light-bloom{opacity:.74}

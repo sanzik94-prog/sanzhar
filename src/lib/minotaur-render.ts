@@ -6,7 +6,18 @@ export function drawMinotaur(
   eyeColor: string,
 ) {
   context.save();
-  context.fillStyle = '#33251f';
+  const bodyLight = context.createRadialGradient(
+    x - size * .14,
+    top + size * .38,
+    size * .04,
+    x,
+    top + size * .62,
+    size * .55,
+  );
+  bodyLight.addColorStop(0, '#725b4b');
+  bodyLight.addColorStop(.42, '#423129');
+  bodyLight.addColorStop(1, '#1b1412');
+  context.fillStyle = bodyLight;
   context.strokeStyle = '#16110f';
   context.lineWidth = Math.max(3, size * .035);
 
@@ -14,7 +25,12 @@ export function drawMinotaur(
   context.ellipse(x, top + size * .58, size * .3, size * .36, 0, 0, Math.PI * 2);
   context.fill();
   context.stroke();
+  context.fillStyle = 'rgba(190,154,122,.14)';
+  context.beginPath();
+  context.ellipse(x - size * .08, top + size * .48, size * .13, size * .2, -.35, 0, Math.PI * 2);
+  context.fill();
   for (const direction of [-1, 1]) {
+    context.fillStyle = bodyLight;
     context.beginPath();
     context.ellipse(x + direction * size * .3, top + size * .58, size * .13, size * .34, direction * -.18, 0, Math.PI * 2);
     context.fill();
@@ -25,7 +41,11 @@ export function drawMinotaur(
     context.stroke();
   }
 
-  context.fillStyle = '#4b3a31';
+  const mane = context.createLinearGradient(x - size * .2, top, x + size * .2, top + size * .45);
+  mane.addColorStop(0, '#766b60');
+  mane.addColorStop(.45, '#443a33');
+  mane.addColorStop(1, '#1e1816');
+  context.fillStyle = mane;
   context.beginPath();
   context.moveTo(x - size * .23, top + size * .29);
   context.quadraticCurveTo(x, top - size * .12, x + size * .23, top + size * .29);
@@ -43,7 +63,11 @@ export function drawMinotaur(
   context.ellipse(x, top + size * .34, size * .13, size * .09, 0, 0, Math.PI * 2);
   context.fill();
 
-  context.strokeStyle = '#17120f';
+  const horn = context.createLinearGradient(x, top, x, top - size * .22);
+  horn.addColorStop(0, '#17120f');
+  horn.addColorStop(.55, '#51483f');
+  horn.addColorStop(1, '#a79b88');
+  context.strokeStyle = horn;
   context.lineWidth = Math.max(5, size * .065);
   context.lineCap = 'round';
   for (const direction of [-1, 1]) {
@@ -66,6 +90,12 @@ export function drawMinotaur(
     context.lineTo(x + direction * size * .13, top + size * .72);
     context.stroke();
   }
+
+  context.strokeStyle = 'rgba(205,174,145,.2)';
+  context.lineWidth = Math.max(2, size * .018);
+  context.beginPath();
+  context.arc(x, top + size * .58, size * .2, Math.PI * 1.08, Math.PI * 1.9);
+  context.stroke();
 
   context.shadowColor = eyeColor;
   context.shadowBlur = Math.max(18, size * .22);

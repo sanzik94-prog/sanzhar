@@ -1,20 +1,21 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'wouter';
-import { CaseModal } from '../components/CaseModal';
 import { GameHeader } from '../components/GameHeader';
 import { PuzzleCard } from '../components/PuzzleCard';
 import { RoomScene } from '../components/RoomScene';
-import { createPuzzle, getRandomSkin, puzzleCount, skins } from '../lib/game';
+import { createPuzzle, puzzleCount, skins } from '../lib/game';
+import { loadBalance } from '../lib/wallet';
+
+const ROOM_REWARD = 2_000;
 
 export function GamePage() {
   const [, navigate] = useLocation();
   const [room, setRoom] = useState(() => Number(localStorage.getItem('shadow-room') ?? 1));
-  const [loot, setLoot] = useState(() => Number(localStorage.getItem('shadow-loot') ?? 0));
+  const [loot, setLoot] = useState(loadBalance);
   const [solved, setSolved] = useState(0);
   const [status, setStatus] = useState<'playing' | 'won' | 'lost'>('playing');
   const [puzzleOpen, setPuzzleOpen] = useState(false);
   const [attempt, setAttempt] = useState(0);
-  const [caseReward, setCaseReward] = useState<ReturnType<typeof getRandomSkin> | null>(null);
   const total = puzzleCount(room);
   const puzzle = useMemo(() => createPuzzle(room, solved), [room, solved]);
 
@@ -29,19 +30,7 @@ export function GamePage() {
 
   function solvePuzzle() {
     setPuzzleOpen(false);
-    if (solved + 1 < total) {
-      setSolved((value) => value + 1);
-      return;
-    }
-    const earned = total * 750;
-    const nextRoom = Math.min(room + 1, 100);
-    setLoot((value) => {
-      localStorage.setItem('shadow-loot', String(value + earned));
-      return value + earned;
-    });
-    localStorage.setItem('shadow-room', String(nextRoom));
-    setStatus('won');
-    if (room % 5 === 0) setCaseReward(getRandomSkin());
+    setSolved((value) => Math.min(value + 1, total));
   }
 
   function nextRoom() {
@@ -54,14 +43,6 @@ export function GamePage() {
     setStatus('playing');
   }
 
-  function collectCase() {
-    if (!caseReward) return;
-    const id = skins.findIndex((skin) => skin.name === caseReward.name);
-    const owned = JSON.parse(localStorage.getItem('shadow-skins') ?? '[0]') as number[];
-    localStorage.setItem('shadow-skins', JSON.stringify([...new Set([...owned, id])]));
-    setCaseReward(null);
-  }
-
   function startReplay() {
     setAttempt((value) => value + 1);
     setStatus('playing');
@@ -72,7 +53,7 @@ export function GamePage() {
   function enterNextRoom() {
     const upcomingRoom = Math.min(room + 1, 100);
     setLoot((value) => {
-      const nextLoot = value + total * 750;
+      const nextLoot = value + ROOM_REWARD;
       localStorage.setItem('shadow-loot', String(nextLoot));
       return nextLoot;
     });
@@ -92,10 +73,11 @@ export function GamePage() {
     return () => window.removeEventListener('keydown', replayWithKeyboard);
   }, [status, room]);
 
-  const earned = total * 750;
+  const earned = ROOM_REWARD;
+  const selectedSkin = Number(localStorage.getItem('shadow-selected-skin') ?? 0);
   return (
     <main className="game-page">
-      <GameHeader room={room} loot={loot} skinIcon={skins[0].icon} onExit={() => navigate('/')} />
+      <GameHeader room={room} loot={loot} skinIcon={skins[selectedSkin]?.icon ?? skins[0].icon} onExit={() => navigate('/')} />
       <div className={`game-grid ${puzzleOpen || status !== 'playing' ? 'puzzle-is-open' : ''}`}>
         <div className="puzzle-column">
           {status === 'playing' && puzzleOpen && (
@@ -116,7 +98,6 @@ export function GamePage() {
         <RoomScene key={`${room}-${attempt}`} solved={status === 'won' ? total : solved} total={total}
           onCaught={() => status === 'playing' && setStatus('lost')} onFinish={enterNextRoom} room={room} />
       </div>
-      {caseReward && <CaseModal skin={caseReward} isNew onClose={collectCase} />}
     </main>
   );
 }

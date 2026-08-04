@@ -30,55 +30,52 @@ export const skins: Skin[] = [
 ];
 
 export function puzzleCount(room: number) {
-  if (room <= 5) return 3 + (room % 2);
-  if (room <= 8) return 5 + (room % 3);
-  if (room <= 40) return 10 + (room % 4);
-  return 15 + (room % 6);
-}
-
-export function roomTime(room: number) {
-  return 28 + room * 2;
+  if (room <= 15) return 3 + ((room - 1) % 3);
+  if (room <= 30) return 4 + ((room - 16) % 4);
+  if (room <= 60) return 5 + ((room - 31) % 4);
+  return 6 + ((room - 61) % 5);
 }
 
 function puzzleNumber(room: number, index: number) {
   let number = index;
-  for (let previousRoom = 1; previousRoom < room; previousRoom += 1) {
-    number += puzzleCount(previousRoom);
-  }
-  return number;
+  for (let previous = 1; previous < room; previous += 1) number += puzzleCount(previous);
+  return number + 1;
 }
 
-function createFootballQuestion(room: number, index: number) {
-  const number = puzzleNumber(room, index);
-  if (number === 0) {
-    return {
-      question: 'В каком году Испания выиграла второй мужской чемпионат мира?',
-      answer: '2026',
-    };
-  }
-
-  const first = 2 + (number % 17);
-  const second = 1 + ((number * 3) % 11);
-  const label = `Комната ${room}, замок ${index + 1}`;
-  const templates = [
-    { question: `${label}: команда забила ${first} голов в первом тайме и ${second} во втором. Сколько всего?`, answer: first + second },
-    { question: `${label}: игрок сделал ${first + second} ударов, ${second} не попали в створ. Сколько попали?`, answer: first },
-    { question: `${label}: на секторе ${first} рядов по ${second} мест. Сколько всего мест?`, answer: first * second },
-    { question: `${label}: команда набрала ${first * 3} очков за победы. Сколько побед она одержала?`, answer: first },
-    { question: `${label}: футболист забил ${first} голов и отдал ${second} передач. Сколько результативных действий?`, answer: first + second },
-  ];
-  const selected = templates[number % templates.length];
-  return { question: selected.question, answer: String(selected.answer) };
+function digits(value: number) {
+  return String(value).split('').reduce((sum, digit) => sum + Number(digit), 0);
 }
 
 export function createPuzzle(room: number, index: number) {
-  const puzzle = createFootballQuestion(room, index);
-  return {
-    kind: 'code' as const,
-    title: 'Футбольный вопрос',
-    hint: puzzle.question,
-    answer: puzzle.answer,
-  };
+  const id = puzzleNumber(room, index);
+  const a = 10 + ((id * 17) % 89);
+  const b = 3 + ((id * 31) % 47);
+  const c = 2 + ((id * 13) % 8);
+  const code = 1000 + ((id * 7919) % 9000);
+  const tasks = [
+    ['ЧИСЛОВАЯ ПОСЛЕДОВАТЕЛЬНОСТЬ', `${a}, ${a + c}, ${a + c * 2}, ${a + c * 3}. Какое число следующее?`, String(a + c * 4)],
+    ['ШИФР ЦЕЗАРЯ', `Каждая цифра кода ${code} увеличена на ${c}. Введи сумму исходных цифр и ${c}.`, String(digits(code) + c)],
+    ['ЛИШНЕЕ ЧИСЛО', `В ряду ${a * 2}, ${b * 2}, ${c * 2}, ${a * 2 + 1} только одно нечётное. Введи его.`, String(a * 2 + 1)],
+    ['ЗЕРКАЛЬНЫЙ КОД', `Разверни код ${code} задом наперёд.`, String(code).split('').reverse().join('')],
+    ['СУММА ЦИФР', `Сложи все цифры числа ${code}.`, String(digits(code))],
+    ['ЧАСЫ', `Сейчас ${c}:00. Который час будет через ${b} часов по 24-часовому кругу?`, String((c + b) % 24)],
+    ['ШЕСТЕРЁНКИ', `Первая шестерёнка сделала ${a} оборотов, вторая — в ${c} раз меньше. Введи число оборотов первой, делённое на ${c}, если первая сделала ${a * c}.`, String(a)],
+    ['МОСТ', `Двое идут ${b} и ${b + c} минут. Вместе они идут со скоростью медленного. Сколько минут займёт переход?`, String(b + c)],
+    ['НОСКИ В ТЕМНОТЕ', `В ящике носки ${c} цветов. Сколько носков взять вслепую, чтобы точно получить пару?`, String(c + 1)],
+    ['ВЗЛОМ КОДА', `Первая цифра ${c}, вторая на ${b % 7 + 1} больше. Введи сумму двух цифр.`, String(c + c + b % 7 + 1)],
+    ['ВЕСЫ', `Груз ${a * c} кг разделили на ${c} равных частей. Сколько весит одна?`, String(a)],
+    ['ВОЗРАСТ', `Через ${c} лет герою будет ${a + c}. Сколько ему сейчас?`, String(a)],
+    ['ЛАБИРИНТ ЧИСЕЛ', `Сделай ${a} шагов вперёд, ${b} вправо и ${c} назад. Сколько шагов сделано всего?`, String(a + b + c)],
+    ['ДВОИЧНЫЙ КОД', `Число ${c} записали как сумму степеней двойки. Введи само число.`, String(c)],
+    ['ПРОСТОЕ ЧИСЛО', `Какое ближайшее простое число идёт после ${c === 9 ? 7 : c}?`, String(c === 2 ? 3 : c <= 4 ? 5 : c <= 6 ? 7 : 11)],
+    ['МАГИЧЕСКИЙ КВАДРАТ', `В строке квадрата сумма ${a + b + c}. Уже стоят ${a} и ${b}. Какое третье число?`, String(c)],
+    ['ПРОЦЕНТЫ', `Половина от ${a * 2} равна чему?`, String(a)],
+    ['КАЛЕНДАРЬ', `До события ${a + c} дней, прошло ${c}. Сколько дней осталось?`, String(a)],
+    ['ПРАВДА И ЛОЖЬ', `Из чисел ${a}, ${b}, ${a + b} верно, что третье равно сумме первых. Введи третье.`, String(a + b)],
+    ['ЧИСЛОВАЯ ПИРАМИДА', `Нижние блоки ${a} и ${b}; верхний равен их сумме. Найди верхний.`, String(a + b)],
+  ] as const;
+  const task = tasks[(id - 1) % tasks.length];
+  return { kind: 'code' as const, title: task[0], hint: `Уникальная задача №${id}. ${task[1]}`, answer: task[2] };
 }
 
 export function getRandomSkin() {

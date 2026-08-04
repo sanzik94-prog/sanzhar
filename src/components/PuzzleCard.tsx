@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import type { PuzzleKind } from '../lib/game';
+import { MazePuzzle } from './MazePuzzle';
 
 interface PuzzleCardProps {
   puzzle: { kind: PuzzleKind; title: string; hint: string; answer: string };
@@ -9,41 +9,16 @@ interface PuzzleCardProps {
 }
 
 export function PuzzleCard({ puzzle, number, total, onSolved }: PuzzleCardProps) {
-  const [value, setValue] = useState('');
-  const [showHint, setShowHint] = useState(puzzle.kind !== 'memory');
-  const [wrong, setWrong] = useState(false);
-
-  useEffect(() => {
-    if (puzzle.kind !== 'memory') return;
-    const timer = window.setTimeout(() => setShowHint(false), 1800);
-    return () => window.clearTimeout(timer);
-  }, [puzzle]);
-
-  function checkAnswer() {
-    const normalized = value.replace(/\s/g, '').toUpperCase();
-    if (normalized === puzzle.answer.toUpperCase()) onSolved();
-    else {
-      setWrong(true);
-      setValue('');
-      window.setTimeout(() => setWrong(false), 500);
-    }
-  }
-
   return (
-    <section className={`puzzle-card ${wrong ? 'shake' : ''}`}>
+    <section className="puzzle-card maze-puzzle-card">
       <div className="puzzle-top">
-        <span className="eyebrow">ЗАДАЧА {number} ИЗ {total}</span>
+        <span className="eyebrow">ЛАБИРИНТ {number} ИЗ {total}</span>
         <span className="signal">● СИГНАЛ СТАБИЛЕН</span>
       </div>
-      <div className="lock-icon">{puzzle.kind === 'math' ? '⚡' : puzzle.kind === 'memory' ? '◈' : '⌗'}</div>
-      <h2>{puzzle.title}</h2>
-      <p>Ответь правильно, чтобы отключить замок</p>
-      <div className="puzzle-clue">{showHint ? puzzle.hint : '•  •  •  •'}</div>
-      <input autoFocus value={value} onChange={(event) => setValue(event.target.value)}
-        onKeyDown={(event) => event.key === 'Enter' && checkAnswer()}
-        placeholder="Введи ответ" />
-      <button className="primary-button" onClick={checkAnswer}>ВЗЛОМАТЬ ЗАМОК <span>→</span></button>
-      <small>Enter — подтвердить</small>
+      <h2>НАЙДИ ВЫХОД</h2>
+      <p>Проведи маршрут от S до ★, не проходя сквозь стены</p>
+      <MazePuzzle seedText={`${puzzle.hint}-${number}`} onSolved={onSolved} />
+      <small>Нажимай на соседние клетки коридора</small>
     </section>
   );
 }

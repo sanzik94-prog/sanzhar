@@ -51,16 +51,81 @@ export const mazeWalls: MazeWall[] = [
   { x: 48, y: 98, width: 10, height: 10 }, { x: 156, y: 94, width: 11, height: 11 },
 ];
 
-export function canEnterMazePosition(x: number, y: number, unlockedDoors = 4) {
+export function getMazeLayout(room: number) {
+  return { walls: createPerfectMaze(room), doors: mazeDoors, rooms: mazeRooms };
+}
+
+function createPerfectMaze(room: number) {
+  const cells = 7;
+  const cellSize = 27;
+  const origin = 5;
+  const thickness = 4;
+  const cellWalls = Array<number>(cells * cells).fill(15);
+  const visited = new Set<number>([cells * cells - 4]);
+  const stack = [cells * cells - 4];
+  let seed = (room * 2654435761) >>> 0;
+  const directions = [
+    { dx: 0, dy: -1, wall: 1, opposite: 4 },
+    { dx: 1, dy: 0, wall: 2, opposite: 8 },
+    { dx: 0, dy: 1, wall: 4, opposite: 1 },
+    { dx: -1, dy: 0, wall: 8, opposite: 2 },
+  ];
+  const random = () => {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    return seed / 4294967296;
+  };
+
+  while (stack.length) {
+    const current = stack[stack.length - 1];
+    const x = current % cells;
+    const y = Math.floor(current / cells);
+    const choices = directions.map((direction) => ({
+      ...direction,
+      next: (y + direction.dy) * cells + x + direction.dx,
+      valid: x + direction.dx >= 0 && x + direction.dx < cells
+        && y + direction.dy >= 0 && y + direction.dy < cells,
+    })).filter((choice) => choice.valid && !visited.has(choice.next));
+    if (!choices.length) {
+      stack.pop();
+      continue;
+    }
+    const choice = choices[Math.floor(random() * choices.length)];
+    cellWalls[current] &= ~choice.wall;
+    cellWalls[choice.next] &= ~choice.opposite;
+    visited.add(choice.next);
+    stack.push(choice.next);
+  }
+
+  const result: MazeWall[] = [];
+  cellWalls.forEach((walls, index) => {
+    const x = index % cells;
+    const y = Math.floor(index / cells);
+    const left = origin + x * cellSize;
+    const top = origin + y * cellSize;
+    if (walls & 1) result.push({ x: left, y: top, width: cellSize + thickness, height: thickness });
+    if (walls & 8) result.push({ x: left, y: top, width: thickness, height: cellSize + thickness });
+    if (y === cells - 1 && walls & 4) result.push({ x: left, y: top + cellSize, width: cellSize + thickness, height: thickness });
+    if (x === cells - 1 && walls & 2) result.push({ x: left + cellSize, y: top, width: thickness, height: cellSize + thickness });
+  });
+  return result;
+}
+
+export function canEnterMazePosition(
+  x: number,
+  y: number,
+  unlockedDoors = 4,
+  walls = mazeWalls,
+  doors = mazeDoors,
+) {
   const radius = 2.5;
-  return ![...mazeWalls, ...mazeDoors.slice(unlockedDoors)].some((wall) =>
+  return ![...walls, ...doors.slice(unlockedDoors)].some((wall) =>
     x + radius > wall.x && x - radius < wall.x + wall.width &&
     y + radius > wall.y && y - radius < wall.y + wall.height
   );
 }
 
-export function canCrossMazeGate(fromX: number, toX: number, unlockedDoors: number) {
-  return mazeDoors.every((door, index) => {
+export function canCrossMazeGate(fromX: number, toX: number, unlockedDoors: number, doors = mazeDoors) {
+  return doors.every((door, index) => {
     if (index < unlockedDoors) return true;
     const gateX = door.x + door.width / 2;
     return !((fromX < gateX && toX >= gateX) || (fromX > gateX && toX <= gateX));

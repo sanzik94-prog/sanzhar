@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import { BackroomsDetails } from './BackroomsDetails';
 import { BackroomsCanvas } from './BackroomsCanvas';
 import type { EnemyTheme } from '../lib/enemies';
+import type { MazeWall } from '../lib/backrooms';
+import { PlayerModel3D } from './PlayerModel3D';
 
 interface Point {
   x: number;
@@ -15,6 +17,8 @@ interface RobloxFirstPersonProps {
   unlocked: number;
   portalOpen: boolean;
   enemyTheme: EnemyTheme;
+  walls: MazeWall[];
+  wallColor: [number, number, number];
   onLook: (look: Point) => void;
 }
 
@@ -25,12 +29,14 @@ export function RobloxFirstPerson({
   unlocked,
   portalOpen,
   enemyTheme,
+  walls,
+  wallColor,
   onLook,
 }: RobloxFirstPersonProps) {
   const viewRef = useRef<HTMLDivElement>(null);
   const lastPointer = useRef<Point>({ x: 0, y: 0 });
   const [timePhase, setTimePhase] = useState(0);
-  const [thirdPerson, setThirdPerson] = useState(false);
+  const [thirdPerson, setThirdPerson] = useState(true);
   const lookRef = useRef(look);
   const onLookRef = useRef(onLook);
   lookRef.current = look;
@@ -108,7 +114,7 @@ export function RobloxFirstPerson({
       onContextMenu={(event) => event.preventDefault()}
     >
       <BackroomsCanvas player={player} owner={owner} yaw={look.x} pitch={look.y}
-        portalOpen={portalOpen} enemyTheme={enemyTheme} />
+        portalOpen={portalOpen} enemyTheme={enemyTheme} walls={walls} wallColor={wallColor} />
       <div
         className="roblox-corridor"
         style={{ transform: `scale(1.08) rotateX(${look.y * .4}deg) rotateY(${-visualYaw * .35}deg)` }}
@@ -167,7 +173,11 @@ export function RobloxFirstPerson({
         <span><i className="owner-head"><em /><em /></i><i className="owner-body" /></span>
       </div>
       <div className="roblox-crosshair" />
-      {thirdPerson && <div className="third-person-player"><i /><b /><span /><span /></div>}
+      {thirdPerson && (
+        <div className="third-person-player">
+          <PlayerModel3D />
+        </div>
+      )}
       <button
         type="button"
         className="camera-switch"

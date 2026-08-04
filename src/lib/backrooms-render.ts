@@ -1,4 +1,5 @@
 import type { EnemyTheme } from './enemies';
+import { drawEnemySkin } from './enemy-render';
 import { drawMinotaur } from './minotaur-render';
 
 export function drawBackroomsCeiling(
@@ -60,15 +61,7 @@ export function drawEnemy(
     drawMinotaur(context, x, top, size, theme.accent);
     return;
   }
-  context.fillStyle = theme.body;
-  context.fillRect(x - size * .23, top + size * .3, size * .46, size * .7);
-  context.fillRect(x - size * .17, top, size * .34, size * .36);
-  context.shadowColor = theme.accent;
-  context.shadowBlur = Math.max(18, size * .25);
-  context.fillStyle = theme.accent;
-  context.fillRect(x - size * .09, top + size * .14, 7, 7);
-  context.fillRect(x + size * .07, top + size * .14, 7, 7);
-  context.shadowBlur = 0;
+  drawEnemySkin(context, x, top, size, theme);
 }
 
 export function drawThemeAtmosphere(

@@ -40,7 +40,7 @@ export function BackroomsMap({ solved, total, onCaught, onFinish, room }: Backro
   caughtHandler.current = onCaught;
   finishHandler.current = onFinish;
   const enemyTheme = getEnemyTheme(room);
-  const wallColor: [number, number, number] = room === 12 ? [255, 225, 18] : enemyTheme.wall;
+  const wallColor: [number, number, number] = [255, 221, 18];
   const layout = useMemo(() => getMazeLayout(room), [room]);
   const { doors, rooms, walls } = layout;
   const unlocked = Math.min(doors.length, Math.floor(solved * doors.length / total));

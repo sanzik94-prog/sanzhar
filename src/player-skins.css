@@ -100,3 +100,16 @@
 @keyframes moon-block-leg-left{from{transform:rotateX(28deg)}to{transform:rotateX(-28deg)}}
 @keyframes moon-block-leg-right{from{transform:rotateX(-28deg)}to{transform:rotateX(28deg)}}
 @keyframes moon-block-cape{from{transform:translateZ(-20px) rotateX(-3deg)}to{transform:translateZ(-20px) rotateX(5deg) translateY(-2px)}}
+
+/* Keep the Minecraft-style character clean and easy to read. */
+.skin-id-19 .model-shoulders,
+.skin-id-19 .model-belt,
+.skin-id-19 .model-gloves,
+.skin-id-19 .model-boots,
+.skin-id-19 .model-back-badge,
+.skin-id-19 .skin-emblem,
+.skin-id-19 .skin-head-decor,
+.skin-id-19 .moon-crescent{display:none}
+
+.skin-id-19 .moon-cape::after{content:"☾";position:absolute;left:50%;top:34px;translate:-50% 0;color:#f5edc7;font-size:42px;font-weight:900;line-height:1;text-shadow:2px 2px 0 #77745f,0 0 7px rgba(255,244,190,.55)}
+.skin-id-19 .moon-hood::before{content:"☾";color:#f1ebd2;text-shadow:1px 1px 0 #5f6266,0 0 5px rgba(255,255,235,.5)}

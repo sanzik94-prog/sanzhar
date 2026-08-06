@@ -59,7 +59,7 @@ function createPerfectMaze(room: number) {
   const cells = 7;
   const cellSize = 27;
   const origin = 5;
-  const thickness = 4;
+  const thickness = 5;
   const cellWalls = Array<number>(cells * cells).fill(15);
   const visited = new Set<number>([cells * cells - 4]);
   const stack = [cells * cells - 4];
@@ -102,10 +102,11 @@ function createPerfectMaze(room: number) {
     const y = Math.floor(index / cells);
     const left = origin + x * cellSize;
     const top = origin + y * cellSize;
-    if (walls & 1) result.push({ x: left, y: top, width: cellSize + thickness, height: thickness });
-    if (walls & 8) result.push({ x: left, y: top, width: thickness, height: cellSize + thickness });
-    if (y === cells - 1 && walls & 4) result.push({ x: left, y: top + cellSize, width: cellSize + thickness, height: thickness });
-    if (x === cells - 1 && walls & 2) result.push({ x: left + cellSize, y: top, width: thickness, height: cellSize + thickness });
+    const overlap = 1;
+    if (walls & 1) result.push({ x: left - overlap, y: top, width: cellSize + thickness + overlap * 2, height: thickness });
+    if (walls & 8) result.push({ x: left, y: top - overlap, width: thickness, height: cellSize + thickness + overlap * 2 });
+    if (y === cells - 1 && walls & 4) result.push({ x: left - overlap, y: top + cellSize, width: cellSize + thickness + overlap * 2, height: thickness });
+    if (x === cells - 1 && walls & 2) result.push({ x: left + cellSize, y: top - overlap, width: thickness, height: cellSize + thickness + overlap * 2 });
   });
   return result;
 }

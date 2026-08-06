@@ -96,16 +96,12 @@ export function BackroomsCanvas({ player, owner, yaw, pitch, portalOpen, enemyTh
       const ray = castRay(player, heading + rayOffset, walls);
       const distance = ray.distance * Math.cos(rayOffset);
       const wallHeight = Math.min(height * 1.7, height * 5.2 / Math.max(distance, 1));
-      const light = Math.max(.42, 1.12 - distance / 125);
+      const light = Math.max(.68, 1.12 - distance / 125);
       const [red, green, blue] = wallColor;
       context.fillStyle = ray.rainbow
         ? `hsl(${(x / width * 360 + smoothYaw * 2) % 360} 82% ${Math.round(38 + light * 20)}%)`
         : `rgb(${Math.round(red * light)},${Math.round(green * light)},${Math.round(blue * light)})`;
       context.fillRect(x, horizon - wallHeight / 2, rayWidth + 1, wallHeight);
-      if (x % 48 < rayWidth) {
-        context.fillStyle = 'rgba(30,29,14,.24)';
-        context.fillRect(x, horizon - wallHeight / 2, 2, wallHeight);
-      }
     }
 
     for (let y = horizon; y < height; y += Math.max(10, (y - horizon) * .16)) {

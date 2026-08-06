@@ -30,6 +30,7 @@ export const skins: Skin[] = [
 ];
 
 export function puzzleCount(room: number) {
+  if (room === 1) return 1;
   if (room <= 15) return 3 + ((room - 1) % 3);
   if (room <= 30) return 4 + ((room - 16) % 4);
   if (room <= 60) return 5 + ((room - 31) % 4);

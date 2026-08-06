@@ -3,7 +3,6 @@ import { BackroomsDetails } from './BackroomsDetails';
 import { BackroomsCanvas } from './BackroomsCanvas';
 import type { EnemyTheme } from '../lib/enemies';
 import type { MazeWall } from '../lib/backrooms';
-import { PlayerModel3D } from './PlayerModel3D';
 
 interface Point {
   x: number;
@@ -36,7 +35,6 @@ export function RobloxFirstPerson({
   const viewRef = useRef<HTMLDivElement>(null);
   const lastPointer = useRef<Point>({ x: 0, y: 0 });
   const [timePhase, setTimePhase] = useState(0);
-  const [thirdPerson, setThirdPerson] = useState(true);
   const lookRef = useRef(look);
   const onLookRef = useRef(onLook);
   lookRef.current = look;
@@ -59,9 +57,6 @@ export function RobloxFirstPerson({
   }, []);
 
   useEffect(() => {
-    function toggleView(event: KeyboardEvent) {
-      if (event.key.toLowerCase() === 'v') setThirdPerson((value) => !value);
-    }
     function lockedLook(event: MouseEvent) {
       if (document.pointerLockElement !== viewRef.current) return;
       const current = lookRef.current;
@@ -72,10 +67,8 @@ export function RobloxFirstPerson({
       lookRef.current = next;
       onLookRef.current(next);
     }
-    window.addEventListener('keydown', toggleView);
     document.addEventListener('mousemove', lockedLook);
     return () => {
-      window.removeEventListener('keydown', toggleView);
       document.removeEventListener('mousemove', lockedLook);
     };
   }, []);
@@ -107,7 +100,7 @@ export function RobloxFirstPerson({
   return (
     <div
       ref={viewRef}
-      className={`roblox-view map-zone-${mapZone} depth-zone-${depthZone} time-phase-${timePhase} ${thirdPerson ? 'camera-third' : 'camera-first'} ${dangerClass}`}
+      className={`roblox-view map-zone-${mapZone} depth-zone-${depthZone} time-phase-${timePhase} camera-first ${dangerClass}`}
       onPointerDown={beginLook}
       onPointerMove={rotateLook}
       onDoubleClick={() => viewRef.current?.requestPointerLock()}
@@ -173,20 +166,7 @@ export function RobloxFirstPerson({
         <span><i className="owner-head"><em /><em /></i><i className="owner-body" /></span>
       </div>
       <div className="roblox-crosshair" />
-      {thirdPerson && (
-        <div className="third-person-player">
-          <PlayerModel3D />
-        </div>
-      )}
-      <button
-        type="button"
-        className="camera-switch"
-        onPointerDown={(event) => event.stopPropagation()}
-        onClick={() => setThirdPerson((value) => !value)}
-      >
-        {thirdPerson ? '1 ЛИЦО' : '3 ЛИЦО'}
-      </button>
-      <div className="look-note">Клик — включить мышь · WASD — идти · V — сменить вид</div>
+      <div className="look-note">Клик — включить мышь · WASD — идти</div>
       <div className="realism-overlay"><i /><i /><i /></div>
       <div className="camera-noise" />
       <div className="danger-pulse" />

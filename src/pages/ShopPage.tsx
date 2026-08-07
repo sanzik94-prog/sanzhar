@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { CoinAmount } from '../components/CoinAmount';
+import { PlayerModel3D } from '../components/PlayerModel3D';
 import { skins } from '../lib/game';
 import { loadBalance } from '../lib/wallet';
 
@@ -41,7 +42,7 @@ export function ShopPage() {
           const isSelected = selected === index;
           return (
             <article className={`shop-card ${isSelected ? 'selected' : ''}`} key={skin.name}>
-              <div className="shop-skin-icon">{skin.icon}</div>
+              <div className="shop-skin-icon"><PlayerModel3D skinId={index} /></div>
               <small>{skin.rarity}</small><h2>{skin.name}</h2>
               {index === 0 ? <span className="starter-skin">СТАРТОВЫЙ</span> : <CoinAmount amount={SKIN_PRICE} />}
               <button type="button" disabled={!isOwned && balance < SKIN_PRICE}

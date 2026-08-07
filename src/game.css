@@ -473,6 +473,21 @@
   .walk-joystick{left:max(18px,env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom))}
   .portal-compass{top:max(53px,env(safe-area-inset-top))}
 }
+
+/* Detailed 3D skin previews replace the old emoji-only shop cards. */
+.shop-skin-icon{position:relative;height:180px;display:block;overflow:hidden;background:radial-gradient(circle at 50% 42%,#313a50,#121724 72%)}
+.shop-skin-icon .player-model-3d{position:absolute;left:50%;top:50%;width:240px;height:280px;inset:auto;transform:translate(-50%,-48%) scale(.72);transform-origin:center}
+
+/* Corridor map: yellow bars are puzzle gates, matching the real maze. */
+.puzzle-map-overlay .map-corridor-outline{fill:none;stroke:#e9e6d7;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.puzzle-map-overlay .map-route-line{stroke:rgba(255,229,35,.2);stroke-width:1;stroke-dasharray:3 3}
+.puzzle-map-gate line{stroke:#ffe313;stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 3px #ffe313)}
+.puzzle-map-gate text{fill:#151300;font-size:6px;font-weight:1000;paint-order:stroke;stroke:#ffe313;stroke-width:3px}
+.puzzle-map-gate.solved line{stroke:#54dc85;filter:none}.puzzle-map-gate.solved text{stroke:#54dc85}
+.puzzle-map-gate.current line{stroke:#fff36a;stroke-width:5;animation:map-gate-pulse .8s ease-in-out infinite alternate}
+@keyframes map-gate-pulse{to{filter:drop-shadow(0 0 7px #fff04a)}}
+
+.among-task{width:min(430px,82vw);margin:18px auto;padding:18px;border:5px solid #171b22;border-radius:12px;background:radial-gradient(circle at 50% 35%,#334153,#111720 74%);box-shadow:inset 0 0 30px #06090d;color:#eaf5ff;text-align:center}.among-task>strong{display:block;margin-bottom:15px;color:#79e7ff;font-size:14px;letter-spacing:2px}.among-targets{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.among-targets button{aspect-ratio:1;border:3px solid #607083;border-radius:14px;background:#202b38;color:#ff675c;font-size:30px;box-shadow:inset 0 0 12px #080b10;transition:.18s}.among-targets button:hover{scale:1.06;border-color:#c6f6ff}.among-targets button.cleared{scale:.35;opacity:0;pointer-events:none}.among-task>small{display:block;margin-top:14px;color:#a9bfd0}.among-task-2 .among-targets button{color:#ff424d}.among-task-2 .among-targets button.cleared{scale:1;opacity:.55;color:#65f69b;border-color:#65f69b}.among-task-3 .among-targets button{color:#76db72}.among-task-4>button{width:180px;height:180px;border:8px solid #5e7489;border-radius:50%;background:#172531;color:#baf5ff}.among-task-4>button i{display:block;font-size:70px;font-style:normal}.among-task-4>button span{font-size:10px;font-weight:900}.among-task-4>button.scan-active{animation:among-scan 1s linear infinite;background:#23566c}@keyframes among-scan{50%{box-shadow:0 0 30px #71efff,inset 0 0 25px #71efff}}
 @media(max-height:500px) and (orientation:landscape){
   .enemy-name{top:max(8px,env(safe-area-inset-top))}
   .camera-switch{top:max(8px,env(safe-area-inset-top))}

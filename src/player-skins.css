@@ -51,23 +51,7 @@
 .skin-id-19 .model-arm .back::after,.skin-id-19 .model-leg .back::after{left:2px;right:2px;top:5px;bottom:5px;width:auto;background:repeating-linear-gradient(14deg,transparent 0 6px,rgba(255,255,255,.4) 7px 9px,rgba(48,51,55,.25) 10px 11px);box-shadow:none}.skin-id-19 .model-belt::after,.skin-id-19 .model-belt::before{content:"";position:absolute;top:7px;width:14px;height:18px;border:2px solid #65686b;border-radius:3px;background:linear-gradient(#c3c3bd,#777a7d);box-shadow:0 3px 3px rgba(0,0,0,.45)}.skin-id-19 .model-belt::before{left:3px}.skin-id-19 .model-belt::after{right:3px}
 .topdown-moving .skin-id-19 .moon-cape{animation:moon-cape-walk .55s ease-in-out infinite alternate}.topdown-moving .skin-id-19 .moon-cape-folds{animation:moon-folds-walk .55s ease-in-out infinite alternate}@keyframes moon-cape-walk{from{rotate:0 -3deg;translate:-2px 0}to{rotate:0 3deg;translate:2px -2px}}@keyframes moon-folds-walk{from{skew:1deg 0}to{skew:-1deg 0}}
 .skin-id-19 .model-body .face,.skin-id-19 .model-arm .face,.skin-id-19 .model-leg .face{background-image:linear-gradient(115deg,#ecebe5 0,#b8bab9 58%,#72767b 100%)}.skin-id-19 .model-head .face{background:#d8d8d2}.skin-id-19 .moon-cape{background:linear-gradient(100deg,#595e64,#d6d6d0 48%,#71757a 80%,#44494f)}.skin-id-19 .model-shoulders i{background:linear-gradient(#deddd7,#85898c)}.skin-id-19 .model-gloves i,.skin-id-19 .model-boots i{background:linear-gradient(135deg,#deddd8,#7c8084)}.skin-id-19 .model-arm .back::after,.skin-id-19 .model-leg .back::after,.skin-id-19 .model-body .back::after,.skin-id-19 .model-belt::before,.skin-id-19 .model-belt::after{display:none}.skin-id-19 .moon-cape-folds,.skin-id-19 .moon-mantle,.skin-id-19 .moon-back-crescent{display:none}
-.moon-knight-sprite{position:absolute;left:50%;bottom:-5px;width:170px;height:235px;transform:translateX(-50%);background-image:url('https://media.cgtrader.com/variants/P7UE77DcNkCun2iMxjNnbZ4w/78add9c2f02fbd73a43ffb3970be38683c5f15eff6ca849dc78c644f4ff9ce1b/00.webp');background-repeat:no-repeat;background-size:auto 235px;background-position:left bottom;filter:drop-shadow(0 14px 9px rgba(0,0,0,.8));clip-path:polygon(9% 0,78% 0,100% 100%,0 100%)}.topdown-moving .moon-knight-sprite{animation:moon-sprite-walk .34s ease-in-out infinite alternate}@keyframes moon-sprite-walk{from{translate:-2px 0;rotate:-1deg}to{translate:2px -5px;rotate:1deg}}
-.moon-knight-sprite{background-position:35% bottom;mix-blend-mode:screen;clip-path:polygon(4% 0,96% 0,100% 100%,0 100%)}
-.moon-knight-sprite{width:178px;height:240px;background-image:url('./assets/moon-knight-sprite.png');background-size:auto 270px;background-position:center center;mix-blend-mode:normal;clip-path:none;filter:drop-shadow(0 14px 9px rgba(0,0,0,.78))}
-.moon-knight-sprite{background-image:url('./assets/moon-knight-sprite.png');background-repeat:no-repeat;background-size:auto 270px;background-position:center center;background-color:transparent}
-.topdown-moving .model-rig{animation-duration:.46s;animation-timing-function:cubic-bezier(.45,.05,.55,.95)}.topdown-moving .model-arm-left,.topdown-moving .model-arm-right,.topdown-moving .model-leg-left,.topdown-moving .model-leg-right,.topdown-moving .model-gloves i,.topdown-moving .model-boots i{animation-duration:.5s;animation-timing-function:cubic-bezier(.45,.05,.55,.95)}.topdown-moving .moon-knight-sprite{animation-duration:.48s;animation-timing-function:cubic-bezier(.45,.05,.55,.95)}
-.moon-knight-sprite::after{content:"";position:absolute;left:30%;right:30%;bottom:1px;height:10px;border-radius:50%;background:rgba(0,0,0,.58);filter:blur(5px);transform:translateY(8px)}.topdown-moving .moon-knight-sprite{transform-origin:50% 94%;animation:moon-knight-smooth-walk .56s cubic-bezier(.45,.05,.55,.95) infinite alternate}.topdown-moving .third-person-player{animation:none}@keyframes moon-knight-smooth-walk{0%{transform:translateX(-50%) translate(-3px,1px) rotate(-1.6deg) scaleY(.992);filter:drop-shadow(7px 15px 8px rgba(0,0,0,.72))}50%{transform:translateX(-50%) translateY(-6px) rotate(0deg) scaleY(1.012);filter:drop-shadow(0 18px 10px rgba(0,0,0,.66))}100%{transform:translateX(-50%) translate(3px,1px) rotate(1.6deg) scaleY(.992);filter:drop-shadow(-7px 15px 8px rgba(0,0,0,.72))}}
-
-/* Walking for the original one-piece skin: weight shifts without cutting the image. */
-.topdown-moving .moon-knight-sprite{animation:moon-knight-full-walk .64s linear infinite}
-@keyframes moon-knight-full-walk{
-  0%{transform:translateX(-50%) translate(-4px,1px) rotate(-1.4deg) skewX(-.8deg) scale(1,.985)}
-  25%{transform:translateX(-50%) translate(0,-7px) rotate(0) skewX(0) scale(.99,1.015)}
-  50%{transform:translateX(-50%) translate(4px,1px) rotate(1.4deg) skewX(.8deg) scale(1,.985)}
-  75%{transform:translateX(-50%) translate(0,-7px) rotate(0) skewX(0) scale(.99,1.015)}
-  100%{transform:translateX(-50%) translate(-4px,1px) rotate(-1.4deg) skewX(-.8deg) scale(1,.985)}
-}
-@media (prefers-reduced-motion:reduce){.topdown-moving .moon-knight-sprite{animation:none}}
+.topdown-moving .model-rig{animation-duration:.46s;animation-timing-function:cubic-bezier(.45,.05,.55,.95)}.topdown-moving .model-arm-left,.topdown-moving .model-arm-right,.topdown-moving .model-leg-left,.topdown-moving .model-leg-right,.topdown-moving .model-gloves i,.topdown-moving .model-boots i{animation-duration:.5s;animation-timing-function:cubic-bezier(.45,.05,.55,.95)}
 
 /* Blocky Moon Knight skin inspired by Minecraft proportions. */
 .skin-id-19 .model-head,.skin-id-19 .model-body,.skin-id-19 .model-arm,.skin-id-19 .model-leg{scale:1}
@@ -113,3 +97,11 @@
 
 .skin-id-19 .moon-cape::after{content:"☾";position:absolute;left:50%;top:34px;translate:-50% 0;color:#f5edc7;font-size:42px;font-weight:900;line-height:1;text-shadow:2px 2px 0 #77745f,0 0 7px rgba(255,244,190,.55)}
 .skin-id-19 .moon-hood::before{content:"☾";color:#f1ebd2;text-shadow:1px 1px 0 #5f6266,0 0 5px rgba(255,255,235,.5)}
+
+/* Crisp costume materials and restrained accessories across the collection. */
+.player-model-3d .model-body .front,.player-model-3d .model-body .back{background-blend-mode:soft-light;box-shadow:inset 7px 0 9px rgba(255,255,255,.12),inset -8px 0 10px rgba(0,0,0,.28)}
+.player-model-3d .model-arm .face,.player-model-3d .model-leg .face{background-blend-mode:multiply;box-shadow:inset 4px 0 5px rgba(255,255,255,.12),inset -5px 0 6px rgba(0,0,0,.3)}
+.skin-id-0 .model-shoulders,.skin-id-8 .model-shoulders,.skin-id-9 .model-shoulders,.skin-id-15 .model-shoulders,.skin-id-16 .model-shoulders,.skin-id-17 .model-shoulders{display:none}
+.skin-id-0 .model-back-badge,.skin-id-7 .model-back-badge,.skin-id-8 .model-back-badge,.skin-id-9 .model-back-badge,.skin-id-15 .model-back-badge,.skin-id-16 .model-back-badge,.skin-id-17 .model-back-badge{display:none}
+.shop-skin-icon .model-rig{animation:shop-model-idle 2.4s ease-in-out infinite}
+@keyframes shop-model-idle{50%{translate:0 -4px;rotate:0 5deg}}

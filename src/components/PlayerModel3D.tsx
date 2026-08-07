@@ -8,14 +8,18 @@ function ModelPart({ className }: { className: string }) {
   );
 }
 
-export function PlayerModel3D() {
-  const selectedSkin = Number(localStorage.getItem('shadow-selected-skin') ?? 0);
+interface PlayerModel3DProps {
+  skinId?: number;
+}
+
+export function PlayerModel3D({ skinId }: PlayerModel3DProps = {}) {
+  const selectedSkin = skinId ?? Number(localStorage.getItem('shadow-selected-skin') ?? 0);
   const emblems: Record<number, string> = {
     1: '🦇', 2: '🕷', 3: '◉', 4: '◈', 5: '★', 6: '⚡', 8: '⌁', 9: '➶',
     10: '◢', 11: '◎', 12: '●', 13: '⬡', 14: '★', 15: '◉', 16: '♜', 17: '◆', 18: '♢',
   };
   const hasCape = [1, 6, 11, 19].includes(selectedSkin);
-  const hasHeadDecor = [1, 4, 5, 6, 10, 12, 13, 15, 16, 17, 18].includes(selectedSkin);
+  const hasHeadDecor = [1, 4, 6, 10, 12, 13, 16, 17, 18].includes(selectedSkin);
   const skinClass = selectedSkin === 19 ? 'moon-knight-skin' : `skin-color-${selectedSkin % 5}`;
   return (
     <div className={`player-model-3d ${skinClass} skin-id-${selectedSkin}`} aria-label="3D-модель игрока">

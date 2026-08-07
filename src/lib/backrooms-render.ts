@@ -1,6 +1,7 @@
 import type { EnemyTheme } from './enemies';
 import { drawEnemySkin } from './enemy-render';
 import { drawMinotaur } from './minotaur-render';
+import { FINISH_PORTAL } from './backrooms';
 
 export function drawBackroomsCeiling(
   context: CanvasRenderingContext2D,
@@ -104,8 +105,8 @@ export function drawFinishPortal(
   fieldOfView: number,
   isOpen: boolean,
 ) {
-  const dx = 116 - player.x;
-  const dy = 35 - player.y;
+  const dx = FINISH_PORTAL.x - player.x;
+  const dy = FINISH_PORTAL.y - player.y;
   const distance = Math.hypot(dx, dy);
   const angle = Math.atan2(
     Math.sin(Math.atan2(dy, dx) - heading),

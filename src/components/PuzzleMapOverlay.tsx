@@ -3,28 +3,28 @@ interface PuzzleMapOverlayProps {
   total: number;
 }
 
-const POINTS = [
-  [16, 72], [35, 84], [56, 75], [74, 58], [52, 45],
-  [70, 29], [88, 37], [82, 61], [91, 80], [62, 88],
+const GATES = [
+  [31, 76], [31, 63], [31, 50], [31, 37], [55, 39],
+  [55, 52], [55, 65], [55, 74], [79, 70], [79, 53],
 ];
 
 export function PuzzleMapOverlay({ solved, total }: PuzzleMapOverlayProps) {
   return (
     <aside className="puzzle-map-overlay">
       <div className="puzzle-map-title">КАРТА ГОЛОВОЛОМОК <b>{solved}/{total}</b></div>
-      <svg viewBox="0 0 110 100" role="img" aria-label="Карта комнаты с головоломками">
-        <path className="map-corridor-outline" d="M8 94V58H14V10H27V53H38V36H48V18H94V36H72V49H94V88H82V94Z" />
-        <path className="map-route-line" d="M15 78L34 85L56 76L74 58L52 45L70 29L88 37L82 61L91 80L62 88" />
-        {POINTS.slice(0, total).map(([x, y], index) => {
+      <svg viewBox="0 0 110 100" role="img" aria-label="Карта коридоров с жёлтыми головоломками">
+        <path className="map-corridor-outline" d="M12 92V8H94V92H12M36 8V78M58 24V92M80 8V78" />
+        <path className="map-route-line" d="M47 88V16H69V85H88V14" />
+        {GATES.slice(0, total).map(([x, y], index) => {
           const state = index < solved ? 'solved' : index === solved ? 'current' : 'locked';
           return (
-            <g key={index} className={`puzzle-map-node ${state}`} transform={`translate(${x} ${y})`}>
-              <circle r="6" />
-              <text textAnchor="middle" dominantBaseline="central">{index + 1}</text>
+            <g key={index} className={`puzzle-map-gate ${state}`} transform={`translate(${x} ${y})`}>
+              <line x1="-8" x2="8" />
+              <text textAnchor="middle" y="-2">{index + 1}</text>
             </g>
           );
         })}
-        <path className="map-exit" d="M96 84l8 4-8 4z" />
+        <path className="map-exit" d="M86 9l5 8H81z" />
       </svg>
     </aside>
   );

@@ -11,8 +11,8 @@ const PLAYER_WALK_SPEED = .68;
 const OWNER_SPEED = .18;
 
 export function BackroomsMap({ solved, total, onCaught, onFinish, room }: BackroomsMapProps) {
-  const [player, setPlayer] = useState<Point>({ x: 100, y: 154 });
-  const [owner, setOwner] = useState<Point>({ x: 100, y: 184 });
+  const [player, setPlayer] = useState<Point>({ x: 80, y: 172 });
+  const [owner, setOwner] = useState<Point>({ x: 80, y: 184 });
   const [stick, setStick] = useState<Point>({ x: 0, y: 0 });
   const [caught, setCaught] = useState(false);
   const [stamina, setStamina] = useState(100);
@@ -41,7 +41,7 @@ export function BackroomsMap({ solved, total, onCaught, onFinish, room }: Backro
   finishHandler.current = onFinish;
   const enemyTheme = getEnemyTheme(room);
   const wallColor: [number, number, number] = [255, 221, 18];
-  const layout = useMemo(() => getMazeLayout(room), [room]);
+  const layout = useMemo(() => getMazeLayout(room, total), [room, total]);
   const { doors, rooms, walls } = layout;
   const unlocked = Math.min(doors.length, Math.floor(solved * doors.length / total));
   const blockingDoors = useMemo(() => doors.map((door) => ({
